@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TNAS 2026 — Takshashila Network for Advanced Studies</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --maroon: #6B1533;
+    --maroon-light: #8a1d42;
+    --gold: #D4920A;
+    --gold-light: #f0ab1a;
+    --cream: #FAF7F2;
+    --cream-dark: #F0EBE1;
+    --text: #1a1210;
+    --text-muted: #7a6a62;
+    --white: #ffffff;
+    --border: rgba(107, 21, 51, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--maroon);
+    padding: 48px 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -60px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 60px solid rgba(212,146,10,0.12);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    top: -80px; right: 200px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    border: 40px solid rgba(212,146,10,0.08);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .org-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+  .header-subtitle {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.3px;
+  }
+  .header-dates {
+    margin-top: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .date-badge {
+    background: rgba(212,146,10,0.18);
+    border: 1px solid rgba(212,146,10,0.35);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold-light);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── NAV TABS ── */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(107,21,51,0.07);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    padding: 18px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .tab-btn:hover { color: var(--maroon); }
+  .tab-btn.active {
+    color: var(--maroon);
+    border-bottom-color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ── MAIN CONTENT ── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 60px 80px;
+  }
+
+  /* ── TAB PANELS ── */
+  .panel { display: none; animation: fadeUp 0.3s ease; }
+  .panel.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── DAY SELECTOR ── */
+  .day-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+  .day-btn {
+    padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+  }
+  .day-btn:hover { border-color: var(--maroon); color: var(--maroon); }
+  .day-btn.active {
+    background: var(--maroon);
+    border-color: var(--maroon);
+    color: var(--white);
+  }
+
+  /* ── TRACK BADGE ── */
+  .track-intro {
+    margin-bottom: 32px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, rgba(107,21,51,0.06), rgba(212,146,10,0.04));
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+  }
+  .track-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--maroon);
+    margin-bottom: 4px;
+  }
+  .track-intro p { font-size: 13px; color: var(--text-muted); }
+
+  /* ── SCHEDULE TABLE ── */
+  .day-schedule { display: none; }
+  .day-schedule.active { display: block; }
+
+  .section-group { margin-bottom: 28px; }
+  .section-header {
+    background: var(--maroon);
+    color: var(--white);
+    padding: 10px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 0;
+  }
+
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s ease;
+  }
+  .schedule-row:last-child { border-bottom: none; border-radius: 0 0 6px 6px; }
+  .schedule-row:hover { background: rgba(107,21,51,0.025); }
+
+  .schedule-row.plenary {
+    background: rgba(212,146,10,0.07);
+  }
+  .schedule-row.plenary:hover { background: rgba(212,146,10,0.12); }
+  .schedule-row.break-row {
+    background: rgba(107,21,51,0.03);
+  }
+
+  .time-col {
+    padding: 14px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--maroon);
+    letter-spacing: 0.2px;
+    border-right: 1px solid var(--border);
+    white-space: nowrap;
+    align-self: center;
+  }
+  .event-col {
+    padding: 14px 20px;
+  }
+  .event-title {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.45;
+  }
+  .event-title.bold { font-weight: 500; }
+  .event-title.plenary-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--maroon);
+  }
+  .event-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .event-meta span { color: var(--gold); }
+
+  /* Standalone schedule rows (no section header) */
+  .schedule-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  .schedule-card .schedule-row {
+    background: var(--white);
+  }
+
+  /* ── PEOPLE PANEL ── */
+  .people-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--maroon);
+    margin-bottom: 8px;
+  }
+  .people-section-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 36px;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+  .people-category {
+    margin-bottom: 44px;
+  }
+  .people-category-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .person-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    transition: all 0.2s ease;
+  }
+  .person-card:hover {
+    border-color: rgba(107,21,51,0.3);
+    box-shadow: 0 4px 16px rgba(107,21,51,0.08);
+    transform: translateY(-1px);
+  }
+  .person-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--white);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .person-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+  .person-role {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .person-track {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: rgba(212,146,10,0.12);
+    color: var(--gold);
+  }
+
+  .placeholder-notice {
+    background: rgba(212,146,10,0.08);
+    border: 1px dashed rgba(212,146,10,0.4);
+    border-radius: 8px;
+    padding: 32px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .placeholder-notice strong { color: var(--maroon); }
+
+  /* ── SHARED EVENTS (top of each day) ── */
+  .shared-banner {
+    background: var(--maroon);
+    border-radius: 8px 8px 0 0;
+    padding: 10px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  @media (max-width: 700px) {
+    header { padding: 32px 20px 28px; }
+    main { padding: 32px 20px 60px; }
+    .schedule-row { grid-template-columns: 130px 1fr; }
+    .tab-btn { padding: 16px 18px; font-size: 12px; }
+  }
+
+  /* ── VENUE BADGE (button style) ── */
+  .header-venue {
+    float: right;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.92);
+    padding: 3px 9px 3px 7px;
+    border-radius: 20px;
+    margin-left: 12px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .header-venue::before {
+    content: '⌖';
+    font-size: 12px;
+    line-height: 1;
+    opacity: 0.85;
+  }
+  .section-header::after { content: ''; display: table; clear: both; }
+  .section-chair {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    text-transform: none;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+  .section-chair span:first-child {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 9px;
+    opacity: 0.75;
+  }
+  .chair-name {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+  .shared-banner::after  { content: ''; display: table; clear: both; }
+
+  /* ── MEALS & TRANSITIONS banner — warm slate, visually distinct ── */
+  .shared-banner.meals-banner {
+    background: #4a5568;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 1.2px;
+  }
+  .shared-banner.meals-banner .header-venue {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.22);
+  }
+  /* Slightly muted card border for meals cards */
+  .meals-card {
+    border-color: rgba(74,85,104,0.25);
+  }
+  .meals-card .schedule-row {
+    background: #fafafa;
+  }
+  .meals-card .schedule-row:hover {
+    background: rgba(74,85,104,0.04);
+  }
+
+  
+  
+  
+  
+
+  /* ── PEOPLE TAB BAR ── */
+  .people-tab-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .people-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+  }
+  .people-tab-btn:hover { border-color: var(--maroon); color: var(--maroon); }
+  .people-tab-btn.active {
+    background: var(--maroon);
+    border-color: var(--maroon);
+    color: var(--white);
+  }
+  .people-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.22);
+    color: inherit;
+    border-radius: 20px;
+    padding: 1px 7px;
+    letter-spacing: 0.2px;
+  }
+  .people-tab-btn:not(.active) .people-count {
+    background: rgba(107,21,51,0.08);
+    color: var(--maroon);
+  }
+  .people-group { display: none; }
+  .people-group.active { display: block; }
+  /* ── PERSON CARD ── */
+  .person-email {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    word-break: break-all;
+    line-height: 1.4;
+  }
+  .person-email a { color: var(--text-muted); text-decoration: none; }
+  .person-email a:hover { color: var(--maroon); text-decoration: underline; }
+  .person-email-empty { opacity: 0.35; font-style: italic; }
+
+  /* ── OVERVIEW PANEL ── */
+  .overview-day-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+  .overview-day { display: none; }
+  .overview-day.active { display: block; }
+
+  .ov-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+    align-items: center;
+  }
+  .ov-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .ov-legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* Timeline grid */
+  .ov-grid {
+    display: grid;
+    grid-template-columns: 76px repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 12px;
+  }
+  .ov-col-header {
+    padding: 12px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ov-col-header.time-header {
+    background: var(--cream-dark);
+    color: var(--text-muted);
+    font-size: 10px;
+  }
+  .ov-col-header.track-header {
+    background: var(--maroon);
+    color: rgba(255,255,255,0.9);
+  }
+  .ov-col-header .track-abbr {
+    font-size: 9px;
+    opacity: 0.6;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .ov-col-header .venue-small {
+    font-size: 9px;
+    opacity: 0.55;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-transform: none;
+  }
+
+  /* Row = one time slot */
+  .ov-row {
+    display: contents;
+  }
+  .ov-time {
+    padding: 8px 8px;
+    background: var(--cream-dark);
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    color: var(--maroon);
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1.3;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 10px;
+  }
+  .ov-cell {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    line-height: 1.4;
+    vertical-align: top;
+    min-height: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 3px;
+  }
+  .ov-cell:last-child { border-right: none; }
+  .ov-cell.plenary-cell {
+    background: rgba(212,146,10,0.09);
+  }
+  .ov-cell.break-cell {
+    background: rgba(107,21,51,0.03);
+  }
+  .ov-cell.empty-cell {
+    background: transparent;
+  }
+  /* Theme label — gold, uppercase, small */
+  .ov-cell-theme {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    line-height: 1.3;
+  }
+  /* Event/session label — maroon, the main descriptor */
+  .ov-cell-title {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--maroon);
+    line-height: 1.35;
+  }
+  /* Special session / roundtable type label */
+  .ov-cell-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: var(--maroon);
+    opacity: 0.75;
+    text-transform: uppercase;
+  }
+  /* Speaker / chair / meta info — muted */
+  .ov-cell-meta {
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+  .ov-cell-venue {
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  /* Merged all-tracks row (plenaries) */
+  .ov-plenary-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 76px 1fr;
+  }
+  .ov-plenary-banner {
+    grid-column: 2 / -1;
+    background: linear-gradient(135deg, rgba(107,21,51,0.08), rgba(212,146,10,0.06));
+    border-bottom: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ov-plenary-banner .plenary-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--maroon);
+  }
+  .ov-plenary-banner .plenary-venue {
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .ov-plenary-banner .plenary-time {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+  .ov-divider-row {
+    grid-column: 1 / -1;
+    background: #4a5568;
+    padding: 5px 12px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+  .ov-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    padding: 12px 16px;
+    background: rgba(212,146,10,0.07);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+  }
+  @media (max-width: 700px) {
+    .ov-grid { grid-template-columns: 60px repeat(4, 1fr); font-size: 10px; }
+    .ov-cell { padding: 6px 6px; }
+    .ov-cell-title { font-size: 10px; }
+  }
+
+
+  /* Sub-event box layout inside multi-event cells */
+  .ov-cell {
+    padding: 0 !important;
+  }
+  .ov-cell-inner {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .ov-sub {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 7px 10px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.5);
+    border-left: 3px solid transparent;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .ov-sub + .ov-sub {
+    border-top: 1px solid var(--border);
+  }
+  .ov-sub.sub-paper { border-left-color: rgba(107,21,51,0.25); }
+  .ov-sub.sub-special { border-left-color: var(--gold); background: rgba(212,146,10,0.06); }
+  .ov-sub.sub-panel { border-left-color: #1d3557; background: rgba(29,53,87,0.04); }
+  .ov-sub.sub-roundtable { border-left-color: #2d6a4f; background: rgba(45,106,79,0.05); }
+  .ov-sub.sub-gap { border-left-color: transparent; background: transparent; opacity: 0.4; }
+  .ov-sub.sub-closing { border-left-color: rgba(107,21,51,0.15); background: rgba(107,21,51,0.02); }
+  /* Single-event cells keep simple inner padding */
+  .ov-cell.single .ov-sub {
+    border: none;
+    background: transparent;
+    padding: 8px 10px;
+  }
+
+</style>
+</head>
+<body>
+<header>
+<div class="header-inner">
+<div class="org-label">Takshashila Institution</div>
+<h1>Takshashila Network<br/>for Advanced Studies</h1>
+<p class="header-subtitle">Annual Conference — Four Tracks · Two Days</p>
+<div class="header-dates">
+<span class="date-badge">28 February 2026</span>
+<span style="color:rgba(255,255,255,0.3); font-size:18px;">—</span>
+<span class="date-badge">1 March 2026</span>
+</div>
+</div>
+</header>
+<nav>
+<div class="nav-inner">
+<button class="tab-btn active" onclick="showPanel('overview')">Overview</button>
+<button class="tab-btn" onclick="showPanel('nasc')">China Track <span style="opacity:0.5;font-size:11px;"> NASC</span></button>
+<button class="tab-btn" onclick="showPanel('nasp')">Pakistan Track <span style="opacity:0.5;font-size:11px;"> NASP</span></button>
+<button class="tab-btn" onclick="showPanel('nast')">Tech Geopolitics <span style="opacity:0.5;font-size:11px;"> NAST</span></button>
+<button class="tab-btn" onclick="showPanel('lepf')">Law Enforcement <span style="opacity:0.5;font-size:11px;"> LEPF</span></button>
+<button class="tab-btn" onclick="showPanel('people')">Participants</button>
+</div>
+</nav>
+<main>
+<!-- ═══════════════════════════════════════════════════
+     NASC — CHINA TRACK
+═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-nasc">
+<div class="track-intro">
+<h2>Network for Advanced Study of China Fellowship (NASC)</h2>
+<p>Examining China's domestic governance, strategic ambitions, and evolving role in the Indo-Pacific — with sessions on Tibet, technological competition, and India's China policy.</p>
+</div>
+<div class="day-selector">
+<button class="day-btn active" onclick="showDay('nasc', 1)">28 February</button>
+<button class="day-btn" onclick="showDay('nasc', 2)">1 March</button>
+</div>
+<!-- Day 1 -->
+<div class="day-schedule active" id="nasc-day1">
+<div class="schedule-card" style="margin-bottom:16px;">
+<div class="shared-banner">All-Conference · Plenary<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">09:00 – 09:20</div>
+<div class="event-col">
+<div class="event-title plenary-title">Welcome Address</div>
+</div>
+</div>
+<div class="schedule-row plenary">
+<div class="time-col">09:20 – 10:30</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 1: Townhall</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">10:30 – 10:45</div>
+<div class="event-col">
+<div class="event-title">Transition Time + Tea &amp; Coffee Break</div>
+</div>
+</div></div>
+<div class="section-group">
+<div class="section-header">Paper Discussions — Theme 1: The Tibet Question<div class="section-chair"><span>Chair: </span><span class="chair-name">Anushka Saxena</span></div><span class="header-venue">📍 Indian Affairs Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">10:50 – 11:00</div>
+<div class="event-col">
+<div class="event-title">"Layers of Control": Institutionalization of Governance through Grid Management &amp; the Erosion of Minority Rights in Tibet under Xi Jinping</div>
+<div class="event-meta"><span>Presenter:</span> Dr. Jayshree Borah</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">11:00 – 11:05</div>
+<div class="event-col">
+<div class="event-title">Expert Intervention</div>
+<div class="event-meta"><span>Discussant:</span> Dhara Shah</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:05 – 11:15</div>
+<div class="event-col">
+<div class="event-title">Guardians of the Lineage: Political &amp; Societal Securitisation in the Dalai Lama Succession</div>
+<div class="event-meta"><span>Presenter:</span> Rinzin Namgyal</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">11:15 – 11:20</div>
+<div class="event-col">
+<div class="event-title">Expert Intervention</div>
+<div class="event-meta"><span>Discussant:</span> Dr. Devendra Kumar</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:20 – 11:30</div>
+<div class="event-col">
+<div class="event-title">Buddhism as Soft Power: China's Narrative Politics &amp; the Dalai Lama Succession across South &amp; Southeast Asia</div>
+<div class="event-meta"><span>Presenters:</span> Violina Sarmah &amp; Tabshir Shams</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">11:30 – 11:35</div>
+<div class="event-col">
+<div class="event-title">Expert Intervention</div>
+<div class="event-meta"><span>Discussant:</span> Dr. Amrita Jash</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:35 – 12:05</div>
+<div class="event-col">
+<div class="event-title bold">Q &amp; A</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section-group">
+<div class="section-header">Roundtable<span class="header-venue">📍 Indian Affairs Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row plenary">
+<div class="time-col">12:05 – 13:00</div>
+<div class="event-col">
+<div class="event-title plenary-title">India's Approach to China in a World Marked by Great Power Rivalry</div>
+<div class="event-meta"><span>Provocateurs:</span> Dr. Anton Harder, Dr. Jabin Jacob &amp; Dr. Devendra Kumar · <span>Chair:</span> Dhara Shah</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">13:00 – 14:00</div>
+<div class="event-col">
+<div class="event-title">Lunch</div>
+</div>
+</div><div class="schedule-row break-row">
+<div class="time-col">14:00 – 14:15</div>
+<div class="event-col">
+<div class="event-title">Transition Time</div>
+</div>
+</div></div>
+</div>
+<div class="schedule-card" style="margin-bottom:16px;">
+<div class="shared-banner">All-Conference · Plenary<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">14:15 – 15:30</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 2: Unconference</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">15:30 – 15:45</div>
+<div class="event-col">
+<div class="event-title">Transition Time</div>
+</div>
+</div></div>
+<div class="section-group">
+<div class="section-header">Paper Discussions — Theme 2: China Innovates, But Does It Dominate?<div class="section-chair"><span>Chair: </span><span class="chair-name">Shobhankita Reddy</span></div><span class="header-venue">📍 Indian Affairs Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">15:45 – 15:55</div>
+<div class="event-col">
+<div class="event-title">Opening Remarks</div>
+<div class="event-meta"><span>Speaker:</span> Professor Pradeep Taneja</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">15:57 – 16:07</div>
+<div class="event-col">
+<div class="event-title">Role of Politico-Administrative Ecology in the Quantum Sector: A Comparative Study of US &amp; China</div>
+<div class="event-meta"><span>Presenter:</span> Aditi Choudhary</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">16:07 – 16:12</div>
+<div class="event-col">
+<div class="event-title">Expert Intervention</div>
+<div class="event-meta"><span>Discussant:</span> Shobhankita Reddy</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">16:12 – 16:22</div>
+<div class="event-col">
+<div class="event-title">RISC V Ecosystem in China: Using Market, Government &amp; Society Framework</div>
+<div class="event-meta"><span>Presenter:</span> Nisarg Jani</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">16:22 – 16:27</div>
+<div class="event-col">
+<div class="event-title">Expert Intervention</div>
+<div class="event-meta"><span>Discussant:</span> Ashwin Prasad</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">16:27 – 17:00</div>
+<div class="event-col">
+<div class="event-title bold">Q &amp; A</div>
+</div>
+</div>
+</div>
+</div>
+<div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">17:25 – 18:15</div>
+<div class="event-col">
+<div class="event-title">Transition Time + Tea &amp; Coffee Break</div>
+</div>
+</div></div>
+<div class="schedule-card">
+<div class="shared-banner">All-Conference · Evening<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">18:15 – 20:30</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 3: The Global Hangout</div>
+</div>
+</div>
+</div>
+<div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">20:30 – 22:00</div>
+<div class="event-col">
+<div class="event-title">Dinner</div>
+</div>
+</div></div>
+</div><!-- end nasc-day1 -->
+<!-- Day 2 -->
+<div class="day-schedule" id="nasc-day2">
+<div class="section-group">
+<div class="section-header">Panel Discussion<span class="header-venue">📍 Indian Affairs Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row plenary">
+<div class="time-col">09:00 – 09:55</div>
+<div class="event-col">
+<div class="event-title plenary-title">Talking Security: China, Pakistan &amp; India's National Defence</div>
+<div class="event-meta"><span>Speakers:</span> Lt. Gen. S.L. Narasimhan &amp; Dr. Amrita Jash · <span>Chair:</span> Anushka Saxena</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section-group">
+<div class="section-header">Paper Discussion — Theme 3: Two-Front Conundrum<div class="section-chair"><span>Chair: </span><span class="chair-name">Anushka Saxena</span></div><span class="header-venue">📍 Indian Affairs Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">09:57 – 10:07</div>
+<div class="event-col">
+<div class="event-title">Decoding Sino-Pak Electronic and Joint Warfare Collaboration</div>
+<div class="event-meta"><span>Presenters:</span> Anamitra Banerjee &amp; Ujjawal Upadhyay</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">10:07 – 10:12</div>
+<div class="event-col">
+<div class="event-title">Expert Intervention</div>
+<div class="event-meta"><span>Discussant:</span> Dr. Megha Shrivastava</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">10:12 – 10:20</div>
+<div class="event-col">
+<div class="event-title bold">Q &amp; A</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">10:20 – 10:35</div>
+<div class="event-col">
+<div class="event-title">Tea &amp; Coffee</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section-group">
+<div class="section-header">Panel Discussion<span class="header-venue">📍 Indian Affairs Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row plenary">
+<div class="time-col">10:35 – 11:35</div>
+<div class="event-col">
+<div class="event-title plenary-title">China in the Changing Geo-economic Landscape</div>
+<div class="event-meta"><span>Speakers:</span> Dr. Sanjaya Baru, Ms. Katja Drinhausen &amp; Mr. Santosh Pai · <span>Chair:</span> Amit Kumar</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section-group">
+<div class="section-header">Paper Discussion — Theme 4: Politics of the Green<div class="section-chair"><span>Chair: </span><span class="chair-name">Bhumika Sevkani</span></div><span class="header-venue">📍 Indian Affairs Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">11:37 – 11:47</div>
+<div class="event-col">
+<div class="event-title">Chinese Climate Geopolitics in the Global South: Building a green BRI</div>
+<div class="event-meta"><span>Presenter:</span> Noel Therattil</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">11:47 – 11:52</div>
+<div class="event-col">
+<div class="event-title">Expert Intervention</div>
+<div class="event-meta"><span>Discussant:</span> Lokendra Sharma</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:52 – 12:00</div>
+<div class="event-col">
+<div class="event-title bold">Q &amp; A</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">12:00 – 12:03</div>
+<div class="event-col">
+<div class="event-title">NASC Conclusion</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">12:03 – 12:15</div>
+<div class="event-col">
+<div class="event-title">Transition Time</div>
+</div>
+</div></div>
+</div>
+<div class="schedule-card">
+<div class="shared-banner">All-Conference · Closing<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">12:15 – 13:00</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 4: Closing Ceremony</div>
+<div class="event-meta"><span>Speakers:</span> Pranay Kotasthane, Narayan Ramachandran &amp; Lt. Gen. Prakash Menon</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">13:00 – 14:30</div>
+<div class="event-col">
+<div class="event-title">Lunch + Departures</div>
+</div>
+</div></div>
+</div><!-- end nasc-day2 -->
+</div><!-- end nasc panel -->
+<!-- ═══════════════════════════════════════════════════
+     NASP — PAKISTAN TRACK
+═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-nasp">
+<div class="track-intro">
+<h2>Network for Advanced Study of Pakistan Fellowship (NASP)</h2>
+<p>Analysing Pakistan's political economy, civil-military dynamics, and strategic partnerships — covering governance, the military–jihadi nexus, and regional security implications for India.</p>
+</div>
+<div class="day-selector">
+<button class="day-btn active" onclick="showDay('nasp', 1)">28 February</button>
+<button class="day-btn" onclick="showDay('nasp', 2)">1 March</button>
+</div>
+<!-- Day 1 -->
+<div class="day-schedule active" id="nasp-day1">
+<div class="schedule-card" style="margin-bottom:16px;">
+<div class="shared-banner">All-Conference · Plenary<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">09:00 – 09:20</div>
+<div class="event-col">
+<div class="event-title plenary-title">Welcome Address</div>
+</div>
+</div>
+<div class="schedule-row plenary">
+<div class="time-col">09:20 – 10:30</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 1: Townhall</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">10:30 – 10:45</div>
+<div class="event-col">
+<div class="event-title">Transition Time + Tea &amp; Coffee Break</div>
+</div>
+</div></div>
+<div class="section-group">
+<div class="section-header">Paper Discussions — Theme 1: Who Runs Pakistan?<div class="section-chair"><span>Chair: </span><span class="chair-name">Aishwaria Sonavane</span></div><span class="header-venue">📍 Grand Ballroom 2</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">10:55 – 11:10</div>
+<div class="event-col">
+<div class="event-title">Discerning the Role of Pashtun Nonviolent Movements in Shaping Pakistan's Political Landscape</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:10 – 11:25</div>
+<div class="event-col">
+<div class="event-title">The Generals Meet Their Match: Barelvi Power and Pakistan's Political Crisis</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:25 – 11:40</div>
+<div class="event-col">
+<div class="event-title">Guardians or Gatekeepers? An Analysis of Contemporary Developments in Pakistan's Judiciary-Military Relations</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:40 – 12:05</div>
+<div class="event-col">
+<div class="event-title bold">Q &amp; A</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">12:05 – 12:15</div>
+<div class="event-col">
+<div class="event-title">Tea Break</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">12:15 – 12:30</div>
+<div class="event-col">
+<div class="event-title">Kautilya's Arthashastra as a Diagnostic Tool for Assessing State Function, State Fragility and Societal Institutions in Pakistan</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">12:30 – 12:45</div>
+<div class="event-col">
+<div class="event-title">Assessing Pakistan as a Rentier State</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">12:45 – 13:00</div>
+<div class="event-col">
+<div class="event-title bold">Q &amp; A</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">13:00 – 14:00</div>
+<div class="event-col">
+<div class="event-title">Lunch</div>
+</div>
+</div><div class="schedule-row break-row">
+<div class="time-col">14:00 – 14:15</div>
+<div class="event-col">
+<div class="event-title">Transition Time</div>
+</div>
+</div></div>
+</div>
+<div class="schedule-card" style="margin-bottom:16px;">
+<div class="shared-banner">All-Conference · Plenary<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">14:15 – 15:30</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 2: Unconference</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">15:30 – 15:45</div>
+<div class="event-col">
+<div class="event-title">Transition Time</div>
+</div>
+</div></div>
+<div class="section-group">
+<div class="section-header">Paper Discussions — Theme 2: The Military–Jihadi Complex<div class="section-chair"><span>Chair: </span><span class="chair-name">Adya Madhavan</span></div><span class="header-venue">📍 Grand Ballroom 2</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">15:50 – 16:05</div>
+<div class="event-col">
+<div class="event-title">Evolution of Militant Media Networks in Pakistan: A Comparative Perspective</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">16:05 – 16:20</div>
+<div class="event-col">
+<div class="event-title">How Islamist Militants' and Clerical Narratives Co-Opt Pakistan's Nuclear Deterrent?</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">16:20 – 16:35</div>
+<div class="event-col">
+<div class="event-title">How has Mawdudi's Interpretation of Jihad in Al Jihad fil Islam Influenced the Actions of Pakistan's Army?</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">16:35 – 17:00</div>
+<div class="event-col">
+<div class="event-title bold">Q &amp; A</div>
+</div>
+</div>
+</div>
+</div>
+<div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">17:25 – 18:15</div>
+<div class="event-col">
+<div class="event-title">Transition Time + Tea &amp; Coffee Break</div>
+</div>
+</div></div>
+<div class="schedule-card">
+<div class="shared-banner">All-Conference · Evening<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">18:15 – 20:30</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 3: The Global Hangout</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">20:30 – 22:00</div>
+<div class="event-col">
+<div class="event-title">Dinner</div>
+</div>
+</div></div>
+</div><!-- nasp day1 -->
+<!-- Day 2 -->
+<div class="day-schedule" id="nasp-day2">
+<div class="section-group">
+<div class="section-header">Paper Discussions — Theme 4: Markets and Power<div class="section-chair"><span>Chair: </span><span class="chair-name">Sarthak Pradhan</span></div><span class="header-venue">📍 Grand Ballroom 2</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">09:05 – 09:20</div>
+<div class="event-col">
+<div class="event-title">Regulatory, Economic and Security Implications of Cryptocurrency Adoption in Pakistan</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">09:20 – 09:35</div>
+<div class="event-col">
+<div class="event-title">Mapping Pakistan's Digital Ecosystem: Dependence, Governance and Sovereignty</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">09:35 – 09:50</div>
+<div class="event-col">
+<div class="event-title">Hydropolitics at the Crossroads: Provincial Inequities in Water and Energy</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">09:50 – 10:15</div>
+<div class="event-col">
+<div class="event-title bold">Q &amp; A</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">10:15 – 10:30</div>
+<div class="event-col">
+<div class="event-title">Tea Break</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section-group">
+<div class="section-header">Paper Discussions — Theme 5: Strategic Partnerships<div class="section-chair"><span>Chair: </span><span class="chair-name">Vikrant Shinde</span></div><span class="header-venue">📍 Grand Ballroom 2</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">10:35 – 10:50</div>
+<div class="event-col">
+<div class="event-title">PAF–China: F-6 to J-35 and Beyond</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">10:50 – 11:05</div>
+<div class="event-col">
+<div class="event-title">The Influence of Article 40 on Pakistan's Diplomatic and Economic Relations with Muslim Majority Nations</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:05 – 11:20</div>
+<div class="event-col">
+<div class="event-title">The Historical Trajectory of PAF Collaboration with China and the Key Outcomes of this Partnership</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:20 – 11:45</div>
+<div class="event-col">
+<div class="event-title bold">Q &amp; A</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:45 – 12:10</div>
+<div class="event-col">
+<div class="event-title">India-Pakistan Low-Visibility Tracks</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">12:10 – 12:15</div>
+<div class="event-col">
+<div class="event-title">Transition Time</div>
+</div>
+</div></div>
+</div>
+<div class="schedule-card">
+<div class="shared-banner">All-Conference · Closing<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">12:15 – 13:00</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 4: Closing Ceremony</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">13:00 – 14:30</div>
+<div class="event-col">
+<div class="event-title">Lunch + Departures</div>
+</div>
+</div></div>
+</div><!-- nasp day2 -->
+</div><!-- nasp panel -->
+<!-- ═══════════════════════════════════════════════════
+     NAST — TECHNOLOGY GEOPOLITICS TRACK
+═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-nast">
+<div class="track-intro">
+<h2>Network for Advanced Study of Technology Geopolitics Fellowship (NAST)</h2>
+<p>Exploring the intersection of emerging technologies, national power, and geopolitical competition — from AI and cybersecurity to space, supply chains, and India's digital sovereignty.</p>
+</div>
+<div class="day-selector">
+<button class="day-btn active" onclick="showDay('nast', 1)">28 February</button>
+<button class="day-btn" onclick="showDay('nast', 2)">1 March</button>
+</div>
+<!-- Day 1 -->
+<div class="day-schedule active" id="nast-day1">
+<div class="schedule-card" style="margin-bottom:16px;">
+<div class="shared-banner">All-Conference · Plenary<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">09:00 – 09:20</div>
+<div class="event-col"><div class="event-title plenary-title">Welcome Address</div>
+</div>
+</div>
+<div class="schedule-row plenary">
+<div class="time-col">09:20 – 10:30</div>
+<div class="event-col"><div class="event-title plenary-title">Plenary 1: Townhall</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">10:30 – 10:45</div>
+<div class="event-col"><div class="event-title">Transition Time + Tea &amp; Coffee Break</div>
+</div>
+</div></div><div class="schedule-card" style="margin-bottom:16px;"><div class="shared-banner">NAST · Track Welcome<span class="header-venue">📍 Sigma Hall</span></div><div class="schedule-row break-row">
+<div class="time-col">10:45 – 10:55</div>
+<div class="event-col"><div class="event-title">NAST Welcome Address — Setting The Stage</div>
+</div>
+</div></div>
+<div class="section-group">
+<div class="section-header">Paper Discussions — Theme 1: Emerging Technologies and Supply Chains<div class="section-chair"><span>Chair: </span><span class="chair-name">Bharath Reddy</span></div><span class="header-venue">📍 Sigma Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">10:55 – 11:15</div>
+<div class="event-col">
+<div class="event-title">Climate Trade Wars: Critical Supply Chain Vulnerabilities in India's Solar Energy Transition</div>
+<div class="event-meta"><span>Presenter:</span> Chetna Anjali</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:15 – 11:35</div>
+<div class="event-col">
+<div class="event-title">Securing India's Critical Infrastructure Software Supply Chains: Policy Gaps and Governance Strategies</div>
+<div class="event-meta"><span>Presenter:</span> Arpit Tripathi</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:35 – 11:55</div>
+<div class="event-col">
+<div class="event-title">Integrating Critical Technologies into India's Vaccine Value Chain: A Policy, Economics and Diplomatic Approach for Strengthening the Ecosystem</div>
+<div class="event-meta"><span>Presenters:</span> Soumya Kanti Ghosh &amp; Debasri Mukherjee</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:55 – 12:15</div>
+<div class="event-col">
+<div class="event-title">From Dependencies to Dominance: Redefining India's Strategic Supply Chains in a VUCA Age of Tech Nationalism</div>
+<div class="event-meta"><span>Presenters:</span> Jason Joseph &amp; Rajesh Gopal</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">12:15 – 12:35</div>
+<div class="event-col">
+<div class="event-title">Powering AI Data Centres in India: Clean Energy Pathways and Policy Frameworks</div>
+<div class="event-meta"><span>Presenters:</span> Yash Khandelwal &amp; Kumaresh Ramesh</div>
+</div>
+</div>
+</div>
+<div class="schedule-card" style="margin-bottom:16px;"><div class="shared-banner">Special Session<span class="header-venue">📍 Sigma Hall</span></div><div class="schedule-row plenary">
+<div class="time-col">12:35 – 13:00</div>
+<div class="event-col">
+<div class="event-title plenary-title">Special Session 1 — China's Technology Policy and its Path Towards Technological Development</div>
+<div class="event-meta"><span>Speaker:</span> Prof. Douglas Fuller</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">13:00 – 14:00</div>
+<div class="event-col"><div class="event-title">Lunch</div>
+</div>
+</div><div class="schedule-row break-row">
+<div class="time-col">14:00 – 14:15</div>
+<div class="event-col"><div class="event-title">Transition Time</div>
+</div>
+</div></div>
+</div>
+<div class="schedule-card" style="margin-bottom:16px;">
+<div class="shared-banner">All-Conference · Plenary<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">14:15 – 15:30</div>
+<div class="event-col"><div class="event-title plenary-title">Plenary 2: Unconference</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">15:30 – 15:45</div>
+<div class="event-col"><div class="event-title">Transition Time</div>
+</div>
+</div></div>
+<div class="section-group">
+<div class="section-header">Paper Discussions — Theme 2: Space<div class="section-chair"><span>Chair: </span><span class="chair-name">Bharath Reddy</span></div><span class="header-venue">📍 Sigma Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">15:45 – 16:05</div>
+<div class="event-col">
+<div class="event-title">Navigating Rivalries: India and the Challenges of Convergence in Global Space Governance</div>
+<div class="event-meta"><span>Presenter:</span> Bhargavi PBA</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">16:05 – 16:25</div>
+<div class="event-col">
+<div class="event-title">Space Domain Awareness (SDA) for India: Command &amp; Control in the NewSpace Era</div>
+<div class="event-meta"><span>Presenter:</span> Pranav Satyanath</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section-group">
+<div class="section-header">Paper Discussions — Theme 3: Technology, Geopolitics and National Power<div class="section-chair"><span>Chair: </span><span class="chair-name">Bharath Reddy</span></div><span class="header-venue">📍 Sigma Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">16:25 – 16:45</div>
+<div class="event-col">
+<div class="event-title">Navigating Between Giants: Strategies for Adapting to US-China Tech Rivalry</div>
+<div class="event-meta"><span>Presenter:</span> Kashish Parpiani</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">16:45 – 17:05</div>
+<div class="event-col">
+<div class="event-title">Technology, Geopolitics, and National Power — Revisiting Sovereignty in an age of Innovation</div>
+<div class="event-meta"><span>Presenter:</span> Manav Gudwani</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">17:05 – 17:25</div>
+<div class="event-col">
+<div class="event-title">Governing Social Media Platforms: Evaluating India's Response to Platform Geopolitics through the lens of Digital Sovereignty and National Power</div>
+<div class="event-meta"><span>Presenters:</span> Aaratrica Kashyap &amp; Siddhant Chandra</div>
+</div>
+</div>
+</div>
+</div>
+<div class="schedule-card">
+<div class="shared-banner">All-Conference · Evening<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">18:15 – 20:30</div>
+<div class="event-col"><div class="event-title plenary-title">Plenary 3: The Global Hangout</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">17:25 – 18:15</div>
+<div class="event-col"><div class="event-title">Transition Time + Tea &amp; Coffee Break</div>
+</div>
+</div></div>
+<div class="schedule-card">
+<div class="shared-banner">All-Conference · Evening<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">18:15 – 20:30</div>
+<div class="event-col"><div class="event-title plenary-title">Plenary 3: The Global Hangout</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">20:30 – 22:00</div>
+<div class="event-col"><div class="event-title">Dinner</div>
+</div>
+</div></div>
+</div><!-- nast day1 -->
+<!-- Day 2 -->
+<div class="day-schedule" id="nast-day2">
+<div class="section-group">
+<div class="section-header">Special Session<span class="header-venue">📍 Sigma Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row plenary">
+<div class="time-col">09:00 – 10:00</div>
+<div class="event-col">
+<div class="event-title plenary-title">Special Session 2 — India's Tech Moment: Navigating the Great Power Digital Divide</div>
+<div class="event-meta"><span>Speakers:</span> Karthik Nachiappan, Anirudh Suri &amp; Pranay Kotasthane</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section-group">
+<div class="section-header">Paper Discussion — Theme 4: Artificial Intelligence and Cybersecurity<div class="section-chair"><span>Chair: </span><span class="chair-name">Pranay Kotasthane</span></div><span class="header-venue">📍 Sigma Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">10:00 – 10:20</div>
+<div class="event-col">
+<div class="event-title">GeoAI for Strategic Sovereignty: Building Skills for India's Geospatial Data Future</div>
+<div class="event-meta"><span>Presenters:</span> Neeraj Gudipati &amp; Anandana Kapur</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">10:20 – 10:40</div>
+<div class="event-col">
+<div class="event-title">Catalysing India's AI Ascent</div>
+<div class="event-meta"><span>Presenter:</span> Shubham Shukla</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">10:40 – 11:00</div>
+<div class="event-col">
+<div class="event-title">The Rise of Cyber Sovereignty: Analysing India's Strategy in Global Digital Order</div>
+<div class="event-meta"><span>Presenter:</span> Nistha Kumari Singh</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:00 – 11:20</div>
+<div class="event-col">
+<div class="event-title">Impact of Autonomous Systems on Urban Warfare Tactics &amp; Civilian Protection</div>
+<div class="event-meta"><span>Presenter:</span> Nrusingha Narayan Dey</div>
+</div>
+</div>
+</div>
+</div><div class="section-group"><div class="section-header">Special Session<span class="header-venue">📍 Sigma Hall</span></div><div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;"><div class="schedule-row plenary">
+<div class="time-col">11:20 – 11:50</div>
+<div class="event-col">
+<div class="event-title plenary-title">Special Session 3 — Nuclear Risks From Emerging Tech In The Contemporary Times</div>
+<div class="event-meta"><span>Speaker:</span> Dr. Manpreet Sethi</div>
+</div>
+</div></div></div><div class="schedule-card" style="margin-bottom:16px;"><div class="shared-banner">NAST · Track Closing<span class="header-venue">📍 Sigma Hall</span></div><div class="schedule-row break-row">
+<div class="time-col">11:50 – 12:00</div>
+<div class="event-col"><div class="event-title">NAST Closing Address</div>
+</div>
+</div></div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">12:00 – 12:15</div>
+<div class="event-col"><div class="event-title">Transition Time</div>
+</div>
+</div></div>
+<div class="schedule-card">
+<div class="shared-banner">All-Conference · Closing<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">12:15 – 13:00</div>
+<div class="event-col"><div class="event-title plenary-title">Plenary 4: Closing Ceremony</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">13:00 – 14:30</div>
+<div class="event-col"><div class="event-title">Lunch + Departures</div>
+</div>
+</div></div>
+</div><!-- nast day2 -->
+</div><!-- nast panel -->
+<!-- ═══════════════════════════════════════════════════
+     LEPF — LAW ENFORCEMENT TRACK
+═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-lepf">
+<div class="track-intro">
+<h2>The Law Enforcement and Policing Fellowship (LEPF)</h2>
+<p>Bringing together senior law enforcement professionals to examine policing reform, internal security challenges, and the evolving legal and institutional landscape facing India's police forces.</p>
+</div>
+<div class="day-selector">
+<button class="day-btn active" onclick="showDay('lepf', 1)">28 February</button>
+<button class="day-btn" onclick="showDay('lepf', 2)">1 March</button>
+</div>
+<!-- Day 1 -->
+<div class="day-schedule active" id="lepf-day1">
+<div class="schedule-card" style="margin-bottom:16px;">
+<div class="shared-banner">All-Conference · Plenary<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">09:00 – 09:20</div>
+<div class="event-col">
+<div class="event-title plenary-title">Welcome Address</div>
+</div>
+</div>
+<div class="schedule-row plenary">
+<div class="time-col">09:20 – 10:30</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 1: Townhall</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">10:30 – 10:45</div>
+<div class="event-col">
+<div class="event-title">Transition Time + Tea &amp; Coffee Break</div>
+</div>
+</div></div>
+<div class="section-group">
+<div class="section-header">LEPF Hackathon: Artificial Intelligence in Policing<span class="header-venue">📍 Grand Esquire Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">10:50 – 11:10</div>
+<div class="event-col">
+<div class="event-title">Briefing: Constructing Alternatives</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">11:10 – 12:10</div>
+<div class="event-col">
+<div class="event-title">Breakout Session: Constructing Alternatives</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">12:10 – 12:40</div>
+<div class="event-col">
+<div class="event-title">Group Presentations</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">12:40 – 13:00</div>
+<div class="event-col">
+<div class="event-title">Briefing on Projecting Outcomes</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">13:00 – 14:00</div>
+<div class="event-col">
+<div class="event-title">Lunch</div>
+</div>
+</div><div class="schedule-row break-row">
+<div class="time-col">14:00 – 14:15</div>
+<div class="event-col">
+<div class="event-title">Transition Time</div>
+</div>
+</div></div>
+</div>
+<div class="schedule-card" style="margin-bottom:16px;">
+<div class="shared-banner">All-Conference · Plenary<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">14:15 – 15:30</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 2: Unconference</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">15:30 – 15:45</div>
+<div class="event-col">
+<div class="event-title">Transition Time</div>
+</div>
+</div></div>
+<div class="section-group">
+<div class="section-header">LEPF Hackathon: Artificial Intelligence in Policing (continued)<span class="header-venue">📍 Grand Esquire Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">15:45 – 16:45</div>
+<div class="event-col">
+<div class="event-title">Breakout Session: Projecting Outcomes</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">16:45 – 17:25</div>
+<div class="event-col">
+<div class="event-title">Group Presentations</div>
+</div>
+</div>
+</div>
+</div>
+<div class="schedule-card">
+<div class="shared-banner">All-Conference · Evening<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">18:15 – 20:30</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 3: The Global Hangout</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">17:25 – 18:15</div>
+<div class="event-col">
+<div class="event-title">Transition Time + Tea &amp; Coffee Break</div>
+</div>
+</div><div class="schedule-row break-row">
+<div class="time-col">20:30 – 22:00</div>
+<div class="event-col">
+<div class="event-title">Dinner</div>
+</div>
+</div></div>
+</div><!-- lepf day1 -->
+<!-- Day 2 -->
+<div class="day-schedule" id="lepf-day2">
+<div class="section-group">
+<div class="section-header">LEPF Hackathon: Artificial Intelligence in Policing — Final Day<span class="header-venue">📍 Grand Esquire Hall</span></div>
+<div class="schedule-card" style="border-radius: 0 0 8px 8px; border-top:none;">
+<div class="schedule-row">
+<div class="time-col">09:00 – 09:20</div>
+<div class="event-col">
+<div class="event-title">Briefing: Final Presentation</div>
+</div>
+</div>
+<div class="schedule-row">
+<div class="time-col">09:20 – 10:15</div>
+<div class="event-col">
+<div class="event-title">Breakout Session: Final Presentation</div>
+</div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">10:15 – 10:30</div>
+<div class="event-col">
+<div class="event-title">Tea &amp; Coffee</div>
+</div>
+</div>
+<div class="schedule-row plenary">
+<div class="time-col">10:30 – 12:00</div>
+<div class="event-col">
+<div class="event-title plenary-title">Final Presentations</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">12:00 – 12:15</div>
+<div class="event-col">
+<div class="event-title">Transition Time</div>
+</div>
+</div></div>
+</div>
+<div class="schedule-card">
+<div class="shared-banner">All-Conference · Closing<span class="header-venue">📍 Grand Ballroom 1</span></div>
+<div class="schedule-row plenary">
+<div class="time-col">12:15 – 13:00</div>
+<div class="event-col">
+<div class="event-title plenary-title">Plenary 4: Closing Ceremony</div>
+</div>
+</div>
+</div><div class="schedule-card meals-card" style="margin-bottom:16px;"><div class="shared-banner meals-banner">Meals &amp; Transitions</div><div class="schedule-row break-row">
+<div class="time-col">13:00 – 14:30</div>
+<div class="event-col">
+<div class="event-title">Lunch + Departures</div>
+</div>
+</div></div>
+</div><!-- lepf day2 -->
+</div><!-- lepf panel -->
+<!-- ═══════════════════════════════════════════════════
+     PEOPLE TAB
+═══════════════════════════════════════════════════ -->
+<div class="panel" id="panel-people"><div class="people-section-title">Participants</div>
+<p class="people-section-desc">Fellows, mentors and invitees across all four tracks of TNAS 2026.</p>
+<div class="people-tab-bar">
+<button class="people-tab-btn active" onclick="showPeople('fellows')">Fellows <span class="people-count">59</span></button>
+<button class="people-tab-btn" onclick="showPeople('mentors')">Mentors <span class="people-count">25</span></button>
+<button class="people-tab-btn" onclick="showPeople('invitees')">Invitees <span class="people-count">34</span></button>
+</div>
+<div class="people-group" id="people-fellows"><div class="people-grid"><div class="person-card"><div class="person-avatar">AK</div><div class="person-name">Aaratrica Kashyap</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">AC</div><div class="person-name">Aditi Choudhary</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">AK</div><div class="person-name">Amit Kumar</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">AB</div><div class="person-name">Anamitra Banerjee</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">AY</div><div class="person-name">Anand Kumar Yadav</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">AK</div><div class="person-name">Anandana Kapur</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">AT</div><div class="person-name">Arpit Tripathi</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">AP</div><div class="person-name">Avinash Pandey</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">BP</div><div class="person-name">Bhargavi PBA</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">BM</div><div class="person-name">Bhawni Mishra</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">BD</div><div class="person-name">Bilquees Daud</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">NA</div><div class="person-name">Capt (Dr.) Nitin Agarwala</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">CS</div><div class="person-name">Chandan Pal Singh</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">CA</div><div class="person-name">Chetna Anjali</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">DM</div><div class="person-name">Debasri Mukherjee</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">DG</div><div class="person-name">Deepti George</div><div class="person-email person-email-empty">—</div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">TH</div><div class="person-name">Dr Tejinder Hundal</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">VS</div><div class="person-name">Dr. Vishali  Sharma</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">FF</div><div class="person-name">Femy Francis</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">KN</div><div class="person-name">Grp Captain Kamran Nazeer</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">HK</div><div class="person-name">Harisundar Kumar</div><div class="person-email person-email-empty">—</div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">HB</div><div class="person-name">Harsh Behere</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">HP</div><div class="person-name">Het Kumar Kaachia Patel</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">HS</div><div class="person-name">Hriday Chandra Sarma</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">JJ</div><div class="person-name">Jason Joseph</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">JB</div><div class="person-name">Jayshree Borah</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">KP</div><div class="person-name">Kashish Parpiani</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">KB</div><div class="person-name">Kaushal Balaji</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">KS</div><div class="person-name">Khushi Sehra</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">LM</div><div class="person-name">Lalit Maheshwari</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">MD</div><div class="person-name">Mallika Devi</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">MG</div><div class="person-name">Manav Gudwani</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">MA</div><div class="person-name">Mohammad Taha Ali</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">MB</div><div class="person-name">Moulina Bhattacharya</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">NG</div><div class="person-name">Neeraj Gudipati</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">NG</div><div class="person-name">Neharika Gupta</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">NJ</div><div class="person-name">Nisarg Jani</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">NS</div><div class="person-name">Nistha Kumari Singh</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">NT</div><div class="person-name">Noel Therattil</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">ND</div><div class="person-name">Nrusingha Narayan Dey</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">OR</div><div class="person-name">Olivia Ruhil</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">PS</div><div class="person-name">Pranav Satyanath</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">RG</div><div class="person-name">Rajesh Gopal</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">RT</div><div class="person-name">Rajesh TV</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">RA</div><div class="person-name">Rasik Bin Altaf</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">RS</div><div class="person-name">Ravichandran Swaminathan</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">RN</div><div class="person-name">Rinzin Namgyal</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">SK</div><div class="person-name">Shashvat Kumar</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">SI</div><div class="person-name">Shreya Iyer</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">SS</div><div class="person-name">Shubham Shukla</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">SC</div><div class="person-name">Siddhant Chandra</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">SM</div><div class="person-name">Somya Maan</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">SG</div><div class="person-name">Soumya Kanti Ghosh</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">TS</div><div class="person-name">Tabshir Shams</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">TB</div><div class="person-name">Tanushree Baruah</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">UU</div><div class="person-name">Ujjawal Upadhyay</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">VS</div><div class="person-name">Violina Sarmah</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">AS</div><div class="person-name">Wg Cdr Amardeep Singh</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">YK</div><div class="person-name">Yash Khandelwal</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div></div></div>
+<div class="people-group" id="people-mentors"><div class="people-grid"><div class="person-card"><div class="person-avatar">AS</div><div class="person-name">Anirudh Suri</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">AH</div><div class="person-name">Anton Harder</div><div class="person-email person-email-empty">—</div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">AM</div><div class="person-name">Atul Mishra</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">AP</div><div class="person-name">Dr Aparna Pande</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">DK</div><div class="person-name">Dr Devendra Kumar</div><div class="person-email person-email-empty">—</div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">SD</div><div class="person-name">Dr. Shanthie Mariet D'Souza</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#1d355718;color:#1d3557;border:1px solid #1d355733;">Pakistan Track</span></div><div class="person-card"><div class="person-avatar">JA</div><div class="person-name">Javeed Ahmad</div><div class="person-email person-email-empty">—</div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">KNa</div><div class="person-name">Kailash Nadh</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">KNc</div><div class="person-name">Karthik Nachiappan</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">KD</div><div class="person-name">Katja Drinhausen</div><div class="person-email person-email-empty">—</div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">MR</div><div class="person-name">M N Reddi</div><div class="person-email person-email-empty">—</div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">MS</div><div class="person-name">Manpreet Sethi</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">NR</div><div class="person-name">Narayan Ramachandran</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">PK</div><div class="person-name">Prabodh Kumar</div><div class="person-email person-email-empty">—</div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div><div class="person-card"><div class="person-avatar">PK</div><div class="person-name">Pranay Kotasthane</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">PW</div><div class="person-name">Prateek Waghre</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">DF</div><div class="person-name">Prof Douglas Fuller</div><div class="person-email"><span style="opacity:0.5;font-style:italic;font-size:11px;">email on file</span></div><span class="person-track" style="background:#7b2d8b18;color:#7b2d8b;border:1px solid #7b2d8b33;">Tech Geopolitics</span></div><div class="person-card"><div class="person-avatar">PT</div><div class="person-name">Prof. Pradeep Taneja</div><div class="person-email person-email-empty">—</div><span class="person-track" style="background:#2d6a4f18;color:#2d6a4f;border:1px solid #2d6a4f33;">China Track</span></div><div class="person-card"><div class="person-avatar">RP</div><div class="person-name">Ramphal Pawar</div><div class="person-email person-email-empty">—</div><span class="person-track" style="background:#b5451b18;color:#b5451b;border:1px solid #b5451b33;">Law Enforcement</span></div></div></div></div>
+<!-- ═══════════════════════════════════════════════════
+     OVERVIEW TAB
+═══════════════════════════════════════════════════ -->
+<div class="panel active" id="panel-overview">
+<div class="track-intro">
+  <h2>Conference at a Glance</h2>
+  <p>All sessions across all four tracks, side by side — so you can plan your day and choose where to be.</p>
+</div>
+<div class="overview-day-selector day-selector">
+  <button class="day-btn active" onclick="showOverviewDay(1)">28 February</button>
+  <button class="day-btn" onclick="showOverviewDay(2)">1 March</button>
+</div>
+
+<div class="ov-legend">
+  <span style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text-muted);margin-right:4px;">Venues:</span>
+  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:var(--maroon);opacity:0.7;"></span>Grand Ballroom 1 — All-conference plenaries</span>
+  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#1d3557;opacity:0.7;"></span>Indian Affairs Hall — China Track</span>
+  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#2d6a4f;opacity:0.7;"></span>Grand Ballroom 2 — Pakistan Track</span>
+  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#7b2d8b;opacity:0.7;"></span>Sigma Hall — Tech Geopolitics</span>
+  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#b5451b;opacity:0.7;"></span>Grand Esquire Hall — Law Enforcement</span>
+</div>
+<p class="ov-note">All four tracks attend <strong>shared plenaries</strong> together (shown as full-width gold rows). Track-specific sessions run in parallel in their respective venues.</p>
+
+<!-- ── DAY 1 ── -->
+<div class="overview-day active" id="overview-day1">
+<div class="ov-grid">
+
+  <!-- Column headers -->
+  <div class="ov-col-header time-header">Time</div>
+  <div class="ov-col-header track-header" style="background:#1d3557;">China Track <span class="track-abbr">NASC</span><span class="venue-small">📍 Indian Affairs Hall</span></div>
+  <div class="ov-col-header track-header" style="background:#2d6a4f;">Pakistan Track <span class="track-abbr">NASP</span><span class="venue-small">📍 Grand Ballroom 2</span></div>
+  <div class="ov-col-header track-header" style="background:#7b2d8b;">Tech Geopolitics <span class="track-abbr">NAST</span><span class="venue-small">📍 Sigma Hall</span></div>
+  <div class="ov-col-header track-header" style="background:#b5451b;">Law Enforcement <span class="track-abbr">LEPF</span><span class="venue-small">📍 Grand Esquire Hall</span></div>
+
+  <!-- 09:00 PLENARY -->
+  <div class="ov-time">09:00</div>
+  <div class="ov-plenary-banner" style="grid-column:2/-1;">
+    <span class="plenary-label">Welcome Address</span>
+    <span class="plenary-venue">📍 Grand Ballroom 1</span>
+    <span class="plenary-time">09:00 – 09:20</span>
+  </div>
+
+  <!-- 09:20 PLENARY -->
+  <div class="ov-time">09:20</div>
+  <div class="ov-plenary-banner" style="grid-column:2/-1;">
+    <span class="plenary-label">Plenary 1: Townhall</span>
+    <span class="plenary-venue">📍 Grand Ballroom 1</span>
+    <span class="plenary-time">09:20 – 10:30</span>
+  </div>
+
+  <!-- BREAK -->
+  <div class="ov-divider-row">10:30 – 10:50 &nbsp;·&nbsp; Transition Time + Tea &amp; Coffee Break</div>
+
+  <!-- 10:50–13:00: paper sessions + roundtable/special session overlapping -->
+  <!-- NASC: papers 10:50-12:05 (75min) then Roundtable 12:05-13:00 (55min) = 130 min total -->
+  <!-- NASP: papers 10:55-13:00 (125min) -->
+  <!-- NAST: welcome 10:45-10:55 + papers 10:55-12:35 (100min) + SpecSess1 12:35-13:00 (25min) = 130min -->
+  <!-- LEPF: hackathon 10:50-13:00 (130min) -->
+  <div class="ov-time">10:50 –<br>13:00</div>
+
+  <!-- NASC: papers(75) + roundtable(55) -->
+  <div class="ov-cell" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:75;">
+      <span class="ov-cell-theme">Theme 1: The Tibet Question</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Anushka Saxena · 10:50 – 12:05</span>
+    </div>
+  <div class="ov-sub sub-roundtable" style="flex:55;">
+      <span class="ov-cell-label">Roundtable</span>
+      <span class="ov-cell-title">India's Approach to China in a World Marked by Great Power Rivalry</span>
+      <span class="ov-cell-meta">Provocateurs: Dr. Anton Harder, Dr. Jabin Jacob &amp; Dr. Devendra Kumar · Chair: Dhara Shah · 12:05 – 13:00</span>
+    </div>
+  </div>
+
+  <!-- NASP: papers(125) continuous -->
+  <div class="ov-cell single" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:125;">
+      <span class="ov-cell-theme">Theme 1: Who Runs Pakistan?</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Aishwaria Sonavane · 10:55 – 13:00</span>
+    </div>
+  </div>
+
+  <!-- NAST: papers(100) + special session(25) -->
+  <div class="ov-cell" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:100;">
+      <span class="ov-cell-theme">Theme 1: Emerging Technologies &amp; Supply Chains</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Bharath Reddy · 10:45 – 12:35</span>
+    </div>
+  <div class="ov-sub sub-special" style="flex:25;">
+      <span class="ov-cell-label">Special Session 1</span>
+      <span class="ov-cell-title">China's Technology Policy and its Path Towards Technological Development</span>
+      <span class="ov-cell-meta">Speaker: Prof. Douglas Fuller · 12:35 – 13:00</span>
+    </div>
+  </div>
+
+  <!-- LEPF: hackathon(130) -->
+  <div class="ov-cell single" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:130;">
+      <span class="ov-cell-theme">Hackathon: AI in Policing</span>
+      <span class="ov-cell-title">Briefing + Breakout: Constructing Alternatives</span>
+      <span class="ov-cell-meta">10:50 – 13:00</span>
+    </div>
+  </div>
+
+  <!-- LUNCH -->
+  <div class="ov-divider-row">13:00 – 14:15 &nbsp;·&nbsp; Lunch + Transition Time</div>
+
+  <!-- 14:15 PLENARY -->
+  <div class="ov-time">14:15</div>
+  <div class="ov-plenary-banner" style="grid-column:2/-1;">
+    <span class="plenary-label">Plenary 2: Unconference</span>
+    <span class="plenary-venue">📍 Grand Ballroom 1</span>
+    <span class="plenary-time">14:15 – 15:30</span>
+  </div>
+
+  <!-- BREAK -->
+  <div class="ov-divider-row">15:30 – 15:45 &nbsp;·&nbsp; Transition Time</div>
+
+  <!-- 15:45–17:25 afternoon sessions (100min) -->
+  <div class="ov-time">15:45 –<br>17:25</div>
+
+  <!-- NASC: papers 15:45-17:00 (75min), done -->
+  <div class="ov-cell" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:75;">
+      <span class="ov-cell-theme">Theme 2: China Innovates, But Does It Dominate?</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Shobhankita Reddy · 15:45 – 17:00</span>
+    </div>
+  <div class="ov-sub sub-gap" style="flex:25;">
+      
+    </div>
+  </div>
+
+  <!-- NASP: papers 15:50-17:00 (70min), done -->
+  <div class="ov-cell" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:70;">
+      <span class="ov-cell-theme">Theme 2: The Military–Jihadi Complex</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Adya Madhavan · 15:50 – 17:00</span>
+    </div>
+  <div class="ov-sub sub-gap" style="flex:30;">
+      
+    </div>
+  </div>
+
+  <!-- NAST: papers 15:45-17:25 (100min) continuous -->
+  <div class="ov-cell single" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:100;">
+      <span class="ov-cell-theme">Theme 2: Space · Theme 3: Technology &amp; National Power</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Bharath Reddy · 15:45 – 17:25</span>
+    </div>
+  </div>
+
+  <!-- LEPF: hackathon 15:45-17:25 (100min) -->
+  <div class="ov-cell single" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:100;">
+      <span class="ov-cell-theme">Hackathon (continued): AI in Policing</span>
+      <span class="ov-cell-title">Breakout: Projecting Outcomes + Group Presentations</span>
+      <span class="ov-cell-meta">15:45 – 17:25</span>
+    </div>
+  </div>
+
+  <!-- BREAK -->
+  <div class="ov-divider-row">17:25 – 18:15 &nbsp;·&nbsp; Transition Time + Tea &amp; Coffee Break</div>
+
+  <!-- 18:15 PLENARY EVENING -->
+  <div class="ov-time">18:15</div>
+  <div class="ov-plenary-banner" style="grid-column:2/-1;">
+    <span class="plenary-label">Plenary 3: The Global Hangout</span>
+    <span class="plenary-venue">📍 Grand Ballroom 1</span>
+    <span class="plenary-time">18:15 – 20:30</span>
+  </div>
+
+  <!-- DINNER -->
+  <div class="ov-divider-row">20:30 – 22:00 &nbsp;·&nbsp; Dinner</div>
+
+</div></div><!-- overview-day1 -->
+
+<!-- ── DAY 2 ── -->
+<div class="overview-day" id="overview-day2">
+<div class="ov-grid">
+
+  <!-- Column headers -->
+  <div class="ov-col-header time-header">Time</div>
+  <div class="ov-col-header track-header" style="background:#1d3557;">China Track <span class="track-abbr">NASC</span><span class="venue-small">📍 Indian Affairs Hall</span></div>
+  <div class="ov-col-header track-header" style="background:#2d6a4f;">Pakistan Track <span class="track-abbr">NASP</span><span class="venue-small">📍 Grand Ballroom 2</span></div>
+  <div class="ov-col-header track-header" style="background:#7b2d8b;">Tech Geopolitics <span class="track-abbr">NAST</span><span class="venue-small">📍 Sigma Hall</span></div>
+  <div class="ov-col-header track-header" style="background:#b5451b;">Law Enforcement <span class="track-abbr">LEPF</span><span class="venue-small">📍 Grand Esquire Hall</span></div>
+
+  <!-- 09:00–10:15 morning block (75 min) -->
+  <div class="ov-time">09:00 –<br>10:15</div>
+
+  <!-- NASC: Panel(55) + Papers(18) -->
+  <div class="ov-cell" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-panel" style="flex:55;">
+      <span class="ov-cell-label">Panel Discussion</span>
+      <span class="ov-cell-title">Talking Security — China, Pakistan &amp; India's National Defence</span>
+      <span class="ov-cell-meta">Speakers: Lt. Gen. S.L. Narasimhan &amp; Dr. Amrita Jash · Chair: Anushka Saxena · 09:00 – 09:55</span>
+    </div>
+  <div class="ov-sub sub-paper" style="flex:18;">
+      <span class="ov-cell-theme">Theme 3: Two-Front Conundrum</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Anushka Saxena · 09:57 – 10:15</span>
+    </div>
+  </div>
+
+  <!-- NASP: Papers(70) -->
+  <div class="ov-cell single" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:70;">
+      <span class="ov-cell-theme">Theme 4: Markets and Power</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Sarthak Pradhan · 09:05 – 10:15</span>
+    </div>
+  </div>
+
+  <!-- NAST: SpecSess2(60) + Papers start(15) -->
+  <div class="ov-cell" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-special" style="flex:60;">
+      <span class="ov-cell-label">Special Session 2</span>
+      <span class="ov-cell-title">India's Tech Moment: Navigating the Great Power Digital Divide</span>
+      <span class="ov-cell-meta">Speakers: Karthik Nachiappan, Anirudh Suri &amp; Pranay Kotasthane · 09:00 – 10:00</span>
+    </div>
+  <div class="ov-sub sub-paper" style="flex:15;">
+      <span class="ov-cell-theme">Theme 4: AI &amp; Cybersecurity</span>
+      <span class="ov-cell-title">Paper Discussions begin</span>
+      <span class="ov-cell-meta">Chair: Pranay Kotasthane · 10:00 – 11:20</span>
+    </div>
+  </div>
+
+  <!-- LEPF: Hackathon(75) -->
+  <div class="ov-cell single" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:75;">
+      <span class="ov-cell-theme">Hackathon Final Day: AI in Policing</span>
+      <span class="ov-cell-title">Briefing + Breakout: Final Presentations</span>
+      <span class="ov-cell-meta">09:00 – 10:15</span>
+    </div>
+  </div>
+
+  <!-- BREAK -->
+  <div class="ov-divider-row">10:15 – 10:35 &nbsp;·&nbsp; Tea &amp; Coffee Break</div>
+
+  <!-- 10:35–12:10 mid-morning block (95 min) -->
+  <div class="ov-time">10:35 –<br>12:10</div>
+
+  <!-- NASC: Panel(60) + Papers(26) + gap(9) -->
+  <div class="ov-cell" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-panel" style="flex:60;">
+      <span class="ov-cell-label">Panel Discussion</span>
+      <span class="ov-cell-title">China in the Changing Geo-economic Landscape</span>
+      <span class="ov-cell-meta">Speakers: Dr. Sanjaya Baru, Ms. Katja Drinhausen &amp; Mr. Santosh Pai · Chair: Amit Kumar · 10:35 – 11:35</span>
+    </div>
+  <div class="ov-sub sub-paper" style="flex:26;">
+      <span class="ov-cell-theme">Theme 4: Politics of the Green</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Bhumika Sevkani · 11:37 – 12:03</span>
+    </div>
+  <div class="ov-sub sub-gap" style="flex:9;">
+      
+    </div>
+  </div>
+
+  <!-- NASP: Papers(70) + Low-Visibility(25) -->
+  <div class="ov-cell" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:70;">
+      <span class="ov-cell-theme">Theme 5: Strategic Partnerships</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Vikrant Shinde · 10:35 – 11:45</span>
+    </div>
+  <div class="ov-sub sub-panel" style="flex:25;">
+      <span class="ov-cell-label">Special Session</span>
+      <span class="ov-cell-title">India–Pakistan Low-Visibility Tracks</span>
+      <span class="ov-cell-meta">11:45 – 12:10</span>
+    </div>
+  </div>
+
+  <!-- NAST: Papers cont(45) + SpecSess3(30) + Closing(10) + gap(10) -->
+  <div class="ov-cell" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:45;">
+      <span class="ov-cell-theme">Theme 4: AI &amp; Cybersecurity (cont.)</span>
+      <span class="ov-cell-title">Paper Discussions</span>
+      <span class="ov-cell-meta">Chair: Pranay Kotasthane · 10:35 – 11:20</span>
+    </div>
+  <div class="ov-sub sub-special" style="flex:30;">
+      <span class="ov-cell-label">Special Session 3</span>
+      <span class="ov-cell-title">Nuclear Risks From Emerging Tech In The Contemporary Times</span>
+      <span class="ov-cell-meta">Speaker: Dr. Manpreet Sethi · 11:20 – 11:50</span>
+    </div>
+  <div class="ov-sub sub-closing" style="flex:10;">
+      <span class="ov-cell-title">NAST Closing Address</span>
+      <span class="ov-cell-meta">11:50 – 12:00</span>
+    </div>
+  <div class="ov-sub sub-gap" style="flex:10;">
+      
+    </div>
+  </div>
+
+  <!-- LEPF: Final Presentations(90) + gap(5) -->
+  <div class="ov-cell" style="display:flex;flex-direction:column;">
+  <div class="ov-sub sub-paper" style="flex:90;">
+      <span class="ov-cell-title">Final Presentations</span>
+      <span class="ov-cell-meta">10:30 – 12:00</span>
+    </div>
+  <div class="ov-sub sub-gap" style="flex:5;">
+      
+    </div>
+  </div>
+
+  <!-- 12:15 CLOSING PLENARY -->
+  <div class="ov-time">12:15</div>
+  <div class="ov-plenary-banner" style="grid-column:2/-1;">
+    <span class="plenary-label">Plenary 4: Closing Ceremony</span>
+    <span class="plenary-venue">📍 Grand Ballroom 1</span>
+    <span class="plenary-time">12:15 – 13:00</span>
+  </div>
+
+  <!-- LUNCH -->
+  <div class="ov-divider-row">13:00 – 14:30 &nbsp;·&nbsp; Lunch + Departures</div>
+
+</div></div><!-- overview-day2 -->
+</div><!-- panel-overview -->
+
+</main>
+
+
+<script>
+
+  function showOverviewDay(num) {
+    document.querySelectorAll('#panel-overview .overview-day').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('#panel-overview .day-btn').forEach(b => b.classList.remove('active'));
+    const target = document.getElementById('overview-day' + num);
+    if (target) target.classList.add('active');
+    document.querySelectorAll('#panel-overview .day-btn').forEach(b => {
+      if (b.getAttribute('onclick') === 'showOverviewDay(' + num + ')') b.classList.add('active');
+    });
+  }
+
+  function showPanel(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    const panel = document.getElementById('panel-' + id);
+    if (panel) panel.classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      if (b.getAttribute('onclick') === "showPanel('" + id + "')") b.classList.add('active');
+    });
+  }
+
+  function showDay(track, dayNum) {
+    document.querySelectorAll('#panel-' + track + ' .day-schedule').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('#panel-' + track + ' .day-btn').forEach(b => b.classList.remove('active'));
+    const day = document.getElementById(track + '-day' + dayNum);
+    if (day) day.classList.add('active');
+    document.querySelectorAll('#panel-' + track + ' .day-btn').forEach(b => {
+      if (b.getAttribute('onclick') === "showDay('" + track + "', " + dayNum + ")") b.classList.add('active');
+    });
+  }
+
+  function showPeople(group) {
+    document.querySelectorAll('.people-group').forEach(g => g.classList.remove('active'));
+    document.querySelectorAll('.people-tab-btn').forEach(b => b.classList.remove('active'));
+    const target = document.getElementById('people-' + group);
+    if (target) target.classList.add('active');
+    document.querySelectorAll('.people-tab-btn').forEach(b => {
+      if (b.getAttribute('onclick') === "showPeople('" + group + "')") b.classList.add('active');
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const firstGroup = document.querySelector('.people-group');
+    if (firstGroup && !document.querySelector('.people-group.active')) {
+      firstGroup.classList.add('active');
+      const firstBtn = document.querySelector('.people-tab-btn');
+      if (firstBtn) firstBtn.classList.add('active');
+    }
+  });
+</script>
+</body>
+</html>
