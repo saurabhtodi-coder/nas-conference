@@ -827,6 +827,325 @@ February 27th – March 1, 2026
 </nav>
 <main>
 <!-- ═══════════════════════════════════════════════════
+     OVERVIEW TAB
+═══════════════════════════════════════════════════ -->
+<div class="panel active" id="panel-overview">
+<div class="track-intro">
+  <h2>Conference at a Glance</h2>
+  <p>All sessions across all four tracks, side by side — so you can plan your day and choose where to be.</p>
+</div>
+<div class="overview-day-selector day-selector">
+  <button class="day-btn" onclick="showOverviewDay(0)">27 February</button>
+  <button class="day-btn active" onclick="showOverviewDay(1)">28 February</button>
+  <button class="day-btn" onclick="showOverviewDay(2)">1 March</button>
+</div>
+
+<div class="ov-legend">
+  <span style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text-muted);margin-right:4px;">Venues:</span>
+  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:var(--maroon);opacity:0.7;"></span>Grand Ballroom 1 — All-conference plenaries</span>
+  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#1d3557;opacity:0.7;"></span>Indian Affairs Hall — China Track</span>
+  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#2d6a4f;opacity:0.7;"></span>Grand Ballroom 2 — Pakistan Track</span>
+  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#7b2d8b;opacity:0.7;"></span>Sigma Hall — Tech Geopolitics</span>
+  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#b5451b;opacity:0.7;"></span>Grand Esquire Hall — Law Enforcement</span>
+</div>
+
+<!-- ── DAY 1 ── -->
+<div class="overview-day" id="overview-day0">
+<div class="notice-banner"><strong>Exclusive Event</strong> — This evening is open exclusively to fellows, mentors, and invitees of the NASC, NASP, NAST, and LEPF fellowship tracks.</div>
+<div class="schedule-card" style="margin-bottom:16px;">
+<div class="shared-banner">All-Conference · Evening Programme<span class="header-venue">📍 The Grand Ballroom</span></div>
+<div class="schedule-row break-row">
+<div class="time-col">06:30 – 07:00 PM</div>
+<div class="event-col"><div class="event-title">Registration &amp; Networking</div></div>
+</div>
+<div class="schedule-row plenary">
+<div class="time-col">07:00 – 07:10 PM</div>
+<div class="event-col"><div class="event-title plenary-title">Welcome Remarks</div></div>
+</div>
+<div class="schedule-row plenary">
+<div class="time-col">07:10 – 08:30 PM</div>
+<div class="event-col"><div class="event-title plenary-title">Welcome Quiz</div></div>
+</div>
+<div class="schedule-row break-row">
+<div class="time-col">08:30 – 10:30 PM</div>
+<div class="event-col"><div class="event-title">Networking + Dinner</div></div>
+</div>
+</div>
+</div><!-- overview-day0 -->
+<div class="overview-day active" id="overview-day1">
+<table class="ov-table">
+  <tr>
+    <th class="th-time">Time</th>
+    <th class="th-track" style="background:#1d3557;">China Track<span class="track-abbr">NASC</span><span class="venue-small">📍 Indian Affairs Hall</span></th>
+    <th class="th-track" style="background:#2d6a4f;">Pakistan Track<span class="track-abbr">NASP</span><span class="venue-small">📍 Grand Ballroom 2</span></th>
+    <th class="th-track" style="background:#7b2d8b;">Tech Geopolitics<span class="track-abbr">NAST</span><span class="venue-small">📍 Sigma Hall</span></th>
+    <th class="th-track" style="background:#b5451b;">Law Enforcement<span class="track-abbr">LEPF</span><span class="venue-small">📍 Grand Esquire Hall</span></th>
+  </tr>
+  <tr class="ov-plenary">
+    <td class="td-time">09:00 –<br>09:20</td>
+    <td colspan="4" class="plenary-cell">
+      <span class="plenary-time-right">09:00 – 09:20</span>
+      <span class="plenary-label">Welcome Address</span>
+      <span class="plenary-venue">📍 Grand Ballroom 1</span>
+    </td>
+  </tr>
+  <tr class="ov-plenary">
+    <td class="td-time">09:20 –<br>10:30</td>
+    <td colspan="4" class="plenary-cell">
+      <span class="plenary-time-right">09:20 – 10:30</span>
+      <span class="plenary-label">Plenary 1: Townhall</span>
+      <span class="plenary-venue">📍 Grand Ballroom 1</span>
+    </td>
+  </tr>
+  <tr class="ov-divider">
+    <td colspan="5">10:30 – 10:50 &nbsp;·&nbsp; Transition Time + Tea &amp; Coffee Break</td>
+  </tr>
+      <tr>
+    <td class="td-time">10:50 –<br>13:00</td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 1, 'slot-nasc-1-1050')" title="View China Track schedule" style="min-height:262px;">
+        <span class="ov-cell-theme">Theme 1: The Tibet Question</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Anushka Saxena · 10:50 – 12:05</span>
+      </div>
+      <div class="ov-sub sub-roundtable clickable" onclick="navigateToSlot('nasc', 1, 'slot-nasc-1-1205')" title="View China Track schedule" style="min-height:192px;">
+        <span class="ov-cell-label">Roundtable</span>
+        <span class="ov-cell-title">India's Approach to China in a World Marked by Great Power Rivalry</span>
+        <span class="ov-cell-meta">Provocateurs: Dr. Anton Harder, Dr. Jabin Jacob &amp; Dr. Devendra Kumar<br>Chair: Dhara Shah · 12:05 – 13:00</span>
+      </div>
+      </div>
+    </td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-gap" style="min-height:18px;"></div>
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 1, 'slot-nasp-1-1055')" title="View Pakistan Track schedule" style="min-height:438px;">
+        <span class="ov-cell-theme">Theme 1: Who Runs Pakistan?</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Aishwaria Sonavane · 10:55 – 13:00</span>
+      </div>
+      </div>
+    </td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nast', 1, 'slot-nast-1-1045')" title="View Tech Geopolitics schedule" style="min-height:368px;">
+        <span class="ov-cell-theme">Theme 1: Emerging Technologies &amp; Supply Chains</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Bharath Reddy · 10:50 – 12:35</span>
+      </div>
+      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nast', 1, 'slot-nast-1-1235')" title="View Tech Geopolitics schedule" style="min-height:88px;">
+        <span class="ov-cell-label">Special Session 1</span>
+        <span class="ov-cell-title">China's Technology Policy and its Path Towards Technological Development</span>
+        <span class="ov-cell-meta">Speaker: Prof. Douglas Fuller · 12:35 – 13:00</span>
+      </div>
+      </div>
+    </td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 1, 'slot-lepf-1-1050')" title="View Law Enforcement schedule" style="min-height:455px;">
+        <span class="ov-cell-theme">Hackathon: AI in Policing</span>
+        <span class="ov-cell-title">Briefing + Breakout: Constructing Alternatives</span>
+        <span class="ov-cell-meta">10:50 – 13:00</span>
+      </div>
+      </div>
+    </td>
+  </tr>
+  <tr class="ov-divider">
+    <td colspan="5">13:00 – 14:15 &nbsp;·&nbsp; Lunch + Transition Time</td>
+  </tr>
+  <tr class="ov-plenary">
+    <td class="td-time">14:15 –<br>15:30</td>
+    <td colspan="4" class="plenary-cell">
+      <span class="plenary-time-right">14:15 – 15:30</span>
+      <span class="plenary-label">Plenary 2: Unconference</span>
+      <span class="plenary-venue">📍 Grand Ballroom 1</span>
+    </td>
+  </tr>
+  <tr class="ov-divider">
+    <td colspan="5">15:30 – 15:45 &nbsp;·&nbsp; Transition Time</td>
+  </tr>
+      <tr>
+    <td class="td-time">15:45 –<br>17:25</td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 1, 'slot-nasc-1-1545')" title="View China Track schedule" style="min-height:262px;">
+        <span class="ov-cell-theme">Theme 2: China Innovates, But Does It Dominate?</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Shobhankita Reddy · 15:45 – 17:00</span>
+      </div>
+      <div class="ov-sub sub-gap" style="min-height:88px;"></div>
+      </div>
+    </td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-gap" style="min-height:18px;"></div>
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 1, 'slot-nasp-1-1550')" title="View Pakistan Track schedule" style="min-height:245px;">
+        <span class="ov-cell-theme">Theme 2: The Military–Jihadi Complex</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Adya Madhavan · 15:50 – 17:00</span>
+      </div>
+      <div class="ov-sub sub-gap" style="min-height:88px;"></div>
+      </div>
+    </td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nast', 1, 'slot-nast-1-1545')" title="View Tech Geopolitics schedule" style="min-height:350px;">
+        <span class="ov-cell-theme">Theme 2: Space · Theme 3: Technology &amp; National Power</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Bharath Reddy · 15:45 – 17:25</span>
+      </div>
+      </div>
+    </td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 1, 'slot-lepf-1-1415')" title="View Law Enforcement schedule" style="min-height:350px;">
+        <span class="ov-cell-theme">Hackathon (continued): AI in Policing</span>
+        <span class="ov-cell-title">Breakout: Projecting Outcomes + Group Presentations</span>
+        <span class="ov-cell-meta">15:45 – 17:25</span>
+      </div>
+      </div>
+    </td>
+  </tr>
+  <tr class="ov-divider">
+    <td colspan="5">17:25 – 18:15 &nbsp;·&nbsp; Transition Time + Tea &amp; Coffee Break</td>
+  </tr>
+  <tr class="ov-plenary">
+    <td class="td-time">18:15 –<br>20:30</td>
+    <td colspan="4" class="plenary-cell">
+      <span class="plenary-time-right">18:15 – 20:30</span>
+      <span class="plenary-label">Plenary 3: The Global Hangout</span>
+      <span class="plenary-venue">📍 Grand Ballroom 1</span>
+    </td>
+  </tr>
+  <tr class="ov-divider">
+    <td colspan="5">20:30 – 22:00 &nbsp;·&nbsp; Dinner</td>
+  </tr>
+</table>
+</div><!-- overview-day1 -->
+
+<!-- ── DAY 2 ── -->
+<div class="overview-day" id="overview-day2">
+<table class="ov-table">
+  <tr>
+    <th class="th-time">Time</th>
+    <th class="th-track" style="background:#1d3557;">China Track<span class="track-abbr">NASC</span><span class="venue-small">📍 Indian Affairs Hall</span></th>
+    <th class="th-track" style="background:#2d6a4f;">Pakistan Track<span class="track-abbr">NASP</span><span class="venue-small">📍 Grand Ballroom 2</span></th>
+    <th class="th-track" style="background:#7b2d8b;">Tech Geopolitics<span class="track-abbr">NAST</span><span class="venue-small">📍 Sigma Hall</span></th>
+    <th class="th-track" style="background:#b5451b;">Law Enforcement<span class="track-abbr">LEPF</span><span class="venue-small">📍 Grand Esquire Hall</span></th>
+  </tr>
+      <tr>
+    <td class="td-time">09:00 –<br>12:10</td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-panel clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-0900')" title="View China Track schedule" style="min-height:192px;">
+        <span class="ov-cell-label">Panel Discussion</span>
+        <span class="ov-cell-title">Talking Security — China, Pakistan &amp; India's National Defence</span>
+        <span class="ov-cell-meta">Speakers: Lt. Gen. S.L. Narasimhan &amp; Dr. Amrita Jash<br>Chair: Anushka Saxena · 09:00 – 09:55</span>
+      </div>
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-0957')" title="View China Track schedule" style="min-height:63px;">
+        <span class="ov-cell-theme">Theme 3: Two-Front Conundrum</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Anushka Saxena · 09:57 – 10:15</span>
+      </div>
+      <div class="ov-sub sub-break" style="min-height:70px;">
+        <span class="ov-cell-meta" style="font-style:italic;">☕ Tea &amp; Coffee Break · 10:15 – 10:35</span>
+      </div>
+      <div class="ov-sub sub-panel clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-1035')" title="View China Track schedule" style="min-height:210px;">
+        <span class="ov-cell-label">Panel Discussion</span>
+        <span class="ov-cell-title">China in the Changing Geo-economic Landscape</span>
+        <span class="ov-cell-meta">Speakers: Dr. Sanjaya Baru, Ms. Katja Drinhausen &amp; Mr. Santosh Pai<br>Chair: Amit Kumar · 10:35 – 11:35</span>
+      </div>
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-1137')" title="View China Track schedule" style="min-height:91px;">
+        <span class="ov-cell-theme">Theme 4: Politics of the Green</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Bhumika Sevkani · 11:37 – 12:03</span>
+      </div>
+      <div class="ov-sub sub-gap" style="min-height:24px;"></div>
+      </div>
+    </td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-gap" style="min-height:18px;"></div>
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-0905')" title="View Pakistan Track schedule" style="min-height:245px;">
+        <span class="ov-cell-theme">Theme 4: Markets and Power</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Sarthak Pradhan · 09:05 – 10:15</span>
+      </div>
+      <div class="ov-sub sub-break" style="min-height:70px;">
+        <span class="ov-cell-meta" style="font-style:italic;">☕ Tea &amp; Coffee Break · 10:15 – 10:35</span>
+      </div>
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-1035')" title="View Pakistan Track schedule" style="min-height:245px;">
+        <span class="ov-cell-theme">Theme 5: Strategic Partnerships</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Vikrant Shinde · 10:35 – 11:45</span>
+      </div>
+      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-1145')" title="View Pakistan Track schedule" style="min-height:88px;">
+        <span class="ov-cell-label">Special Session</span>
+        <span class="ov-cell-title">India–Pakistan Low-Visibility Tracks</span>
+        <span class="ov-cell-meta">11:45 – 12:10</span>
+      </div>
+      </div>
+    </td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-0900')" title="View Tech Geopolitics schedule" style="min-height:210px;">
+        <span class="ov-cell-label">Special Session 2</span>
+        <span class="ov-cell-title">India's Tech Moment: Navigating the Great Power Digital Divide</span>
+        <span class="ov-cell-meta">Speakers: Karthik Nachiappan, Anirudh Suri &amp; Pranay Kotasthane<br>09:00 – 10:00</span>
+      </div>
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1000')" title="View Tech Geopolitics schedule" style="min-height:280px;">
+        <span class="ov-cell-theme">Theme 4: AI &amp; Cybersecurity</span>
+        <span class="ov-cell-title">Paper Discussions</span>
+        <span class="ov-cell-meta">Chair: Pranay Kotasthane · 10:00 – 11:20</span>
+      </div>
+      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1120')" title="View Tech Geopolitics schedule" style="min-height:105px;">
+        <span class="ov-cell-label">Special Session 3</span>
+        <span class="ov-cell-title">Nuclear Risks From Emerging Tech In The Contemporary Times</span>
+        <span class="ov-cell-meta">Speaker: Dr. Manpreet Sethi · 11:20 – 11:50</span>
+      </div>
+      <div class="ov-sub sub-closing clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1150')" title="View Tech Geopolitics schedule" style="min-height:35px;">
+        <span class="ov-cell-title">NAST Closing Address</span>
+        <span class="ov-cell-meta">11:50 – 12:00</span>
+      </div>
+      <div class="ov-sub sub-gap" style="min-height:35px;"></div>
+      </div>
+    </td>
+    <td style="padding:0;vertical-align:top;">
+      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 2, 'slot-lepf-2-0900')" title="View Law Enforcement schedule" style="min-height:262px;">
+        <span class="ov-cell-theme">Hackathon Final Day: AI in Policing</span>
+        <span class="ov-cell-title">Briefing + Breakout: Final Presentations</span>
+        <span class="ov-cell-meta">09:00 – 10:15</span>
+      </div>
+      <div class="ov-sub sub-break" style="min-height:70px;">
+        <span class="ov-cell-meta" style="font-style:italic;">☕ Tea &amp; Coffee Break · 10:15 – 10:35</span>
+      </div>
+      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 2, 'slot-lepf-2-1030')" title="View Law Enforcement schedule" style="min-height:298px;">
+        <span class="ov-cell-title">Final Presentations</span>
+        <span class="ov-cell-meta">10:35 – 12:00</span>
+      </div>
+      <div class="ov-sub sub-gap" style="min-height:35px;"></div>
+      </div>
+    </td>
+  </tr>
+  <tr class="ov-divider">
+    <td colspan="5">12:10 – 12:15 &nbsp;·&nbsp; Transition Time</td>
+  </tr>
+  <tr class="ov-plenary">
+    <td class="td-time">12:15 –<br>13:00</td>
+    <td colspan="4" class="plenary-cell">
+      <span class="plenary-time-right">12:15 – 13:00</span>
+      <span class="plenary-label">Plenary 4: Closing Ceremony</span>
+      <span class="plenary-venue">📍 Grand Ballroom 1</span>
+    </td>
+  </tr>
+  <tr class="ov-divider">
+    <td colspan="5">13:00 – 14:30 &nbsp;·&nbsp; Lunch + Departures</td>
+  </tr>
+</table>
+</div><!-- overview-day2 -->
+</div><!-- panel-overview -->
+<!-- ═══════════════════════════════════════════════════
      NASC — CHINA TRACK
 ═══════════════════════════════════════════════════ -->
 <div class="panel" id="panel-nasc">
@@ -1916,325 +2235,6 @@ February 27th – March 1, 2026
 <div class="people-group" id="people-fellows"><div class="people-track-section"><div class="people-track-heading" style="background:#1d3557;">NASC - China Track</div><div class="people-grid"><div class="person-card"><div class="person-name" style="margin-top:8px;">Aditi Choudhary</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Anamitra Banerjee</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Jayshree Borah</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Mallika Devi</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Nisarg Jani</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Noel Therattil</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Rinzin Namgyal</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Tabshir Shams</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Tanushree Baruah</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Ujjawal Upadhyay</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Violina Sarmah</div></div></div></div><div class="people-track-section"><div class="people-track-heading" style="background:#2d6a4f;">NASP - Pakistan Track</div><div class="people-grid"><div class="person-card"><div class="person-name" style="margin-top:8px;">Anand Kumar Yadav</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Bilquees Daud</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Capt (Dr.) Nitin Agarwala</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Dr Tejinder Hundal</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Femy Francis</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Grp Captain Kamran Nazeer</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Harisundar Kumar</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Harsh Behere</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Kaushal Balaji</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Khushi Sehra</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Mohammad Taha Ali</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Rasik Bin Altaf</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Shreya Iyer</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Somya Maan</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Wg Cdr Amardeep Singh</div></div></div></div><div class="people-track-section"><div class="people-track-heading" style="background:#7b2d8b;">NAST - Tech Geopolitics</div><div class="people-grid"><div class="person-card"><div class="person-name" style="margin-top:8px;">Aaratrica Kashyap</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Anandana Kapur</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Arpit Tripathi</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Bhargavi PBA</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Chetna Anjali</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Debasri Mukherjee</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Jason Joseph</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Kashish Parpiani</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Manav Gudwani</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Neeraj Gudipati</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Nistha Kumari Singh</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Nrusingha Narayan Dey</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Pranav Satyanath</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Rajesh Gopal</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Shubham Shukla</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Siddhant Chandra</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Soumya Kanti Ghosh</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Yash Khandelwal</div></div></div></div><div class="people-track-section"><div class="people-track-heading" style="background:#b5451b;">LEPF - Law Enforcement</div><div class="people-grid"><div class="person-card"><div class="person-name" style="margin-top:8px;">Amit Kumar</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Avinash Pandey</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Bhawni Mishra</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Chandan Pal Singh</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Deepti George</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Dr. Vishali  Sharma</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Het Kumar Kaachia Patel</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Hriday  Chandra Sarma</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Lalit Maheshwari</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Moulina Bhattacharya</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Neharika Gupta</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Olivia Ruhil</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Rajesh TV</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Ravichandran Swaminathan</div></div><div class="person-card"><div class="person-name" style="margin-top:8px;">Shashvat Kumar</div></div></div></div></div>
 <div class="people-group" id="people-mentors"><div class="people-track-section"><div class="people-track-heading" style="background:#1d3557;">China Track</div><div class="people-grid"><div class="mentor-card"><img src="images/nast-mentors/anton.jpg" alt="Dr. Anton Harder" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Anton Harder</div><div class="mentor-role">China Track</div><div class="mentor-bio">Guest Teacher at the Department of International History, London School of Economics. PhD thesis on Sino-Indian relations between 1949-1962. Expert on India-China ties and East Asian history.</div></div></div><div class="mentor-card"><div style="width:100%;height:200px;background:linear-gradient(135deg, #1d3557, #1d3557);display:flex;align-items:center;justify-content:center;"><span style="color:#fff;font-size:48px;font-weight:700;">DK</span></div><div class="mentor-content"><div class="mentor-name">Dr. Devendra Kumar</div><div class="mentor-role">China Track</div><div class="mentor-bio">Associate Fellow at the Centre of Excellence for Himalayan Studies, Shiv Nadar Institution of Eminence. PhD in Political Science from the University of Hyderabad.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/KatjaDrinhausenPress_0.jpg" alt="Katja Drinhausen" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Katja Drinhausen</div><div class="mentor-role">China Track</div><div class="mentor-bio">Head of Program 'Politics & Society' at MERICS. Research focuses on China's legal and governance system, digital governance, social credit systems, human rights and minority policies.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/taneja.jpg" alt="Prof. Pradeep Taneja" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Prof. Pradeep Taneja</div><div class="mentor-role">China Track</div><div class="mentor-bio">Senior Lecturer in Asian politics, political economy and international relations at the University of Melbourne. Deputy Associate Dean – International (India) at the Australia-India Institute.</div></div></div></div></div><div class="people-track-section"><div class="people-track-heading" style="background:#2d6a4f;">Pakistan Track</div><div class="people-grid"><div class="mentor-card"><img src="images/nast-mentors/atul.png" alt="Dr. Atul Mishra" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Atul Mishra</div><div class="mentor-role">Pakistan Track</div><div class="mentor-bio">Associate Professor and Head of Department of International Relations and Governance Studies at Shiv Nadar University. Research explores International Relations theory, Indian foreign policy, and the historical sociology of South Asia.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/aparna pande.png" alt="Dr. Aparna Pande" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Aparna Pande</div><div class="mentor-role">Pakistan Track</div><div class="mentor-bio">Research Fellow and Director of the Initiative on the Future of India and South Asia at the Hudson Institute. Leading expert on Indian foreign policy and the Indian subcontinent's strategic affairs.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/shanti.png" alt="Dr. Shanthie Mariet D'Souza" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Shanthie Mariet D'Souza</div><div class="mentor-role">Pakistan Track</div><div class="mentor-bio">Founder and President of Mantraya, an independent research forum providing policy solutions for the Global South. Visiting Faculty member at the Naval War College in Goa.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/suba.png" alt="Dr. Suba Chandran" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Suba Chandran</div><div class="mentor-role">Pakistan Track</div><div class="mentor-bio">Dean of the School of Conflict and Security Studies at the National Institute of Advanced Studies in Bengaluru. Research interests include Conflict Resolution, Peacebuilding, and the internal security dynamics of the Indian subcontinent.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/sumit ganguly.png" alt="Sumit Ganguly" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Sumit Ganguly</div><div class="mentor-role">Pakistan Track</div><div class="mentor-bio">Senior Fellow at the Hoover Institution and Director of its Huntington Program on Strengthening US-India Relations. Research focuses on the international and comparative politics of the contemporary Indian subcontinent, with over 20 authored or edited books.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/Manish Sabharwal.jpg" alt="Manish Sabharwal" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Manish Sabharwal</div><div class="mentor-role">Pakistan Track</div><div class="mentor-bio">Indian entrepreneur and public policy thinker, Vice Chairman of TeamLease Services. Widely recognized for his work on employment, education, labor law reform, and skill development in India.</div></div></div></div></div><div class="people-track-section"><div class="people-track-heading" style="background:#7b2d8b;">Tech Geopolitics</div><div class="people-grid"><div class="mentor-card"><img src="images/nast-mentors/Anirudh Suri.jpg" alt="Anirudh Suri" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Anirudh Suri</div><div class="mentor-role">Tech Geopolitics</div><div class="mentor-bio">Venture capitalist, technology entrepreneur, and policy advisor. Managing Partner at India Internet Fund and nonresident scholar with Carnegie India.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/kailash nadh.jpg" alt="Kailash Nadh" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Kailash Nadh</div><div class="mentor-role">Tech Geopolitics</div><div class="mentor-bio">Hobbyist software developer and tinkerer. CTO at Zerodha. Volunteers at FOSS United Foundation, Rainmatter Foundation, and Indic Digital Archive Foundation (co-founder).</div></div></div><div class="mentor-card"><img src="images/nast-mentors/karthik.png" alt="Dr. Karthik Nachiappan" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Karthik Nachiappan</div><div class="mentor-role">Tech Geopolitics</div><div class="mentor-bio">Research Fellow at the Institute of South Asian Studies, National University of Singapore. Focusing on India's geoeconomics, trade, technology, climate change, and foreign policy. Author of 'Does India Negotiate?'</div></div></div><div class="mentor-card"><img src="images/nast-mentors/manpreet sethi.png" alt="Dr. Manpreet Sethi" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Manpreet Sethi</div><div class="mentor-role">Tech Geopolitics</div><div class="mentor-bio">Distinguished Fellow at the Centre for Air Power Studies, New Delhi. Over 25 years of research and 120 publications on nuclear strategy, non-proliferation, disarmament, and nuclear governance.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/Narayan Ramachandran.JPG" alt="Narayan Ramachandran" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Narayan Ramachandran</div><div class="mentor-role">Tech Geopolitics</div><div class="mentor-bio">Co-Chairman of Unitus Capital and Co-Founder of InKlude Labs. Former Chairman of RBL Bank and Country Head of Morgan Stanley India. Co-founder of Takshashila Institution.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/prateek.png" alt="Prateek Waghre" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Prateek Waghre</div><div class="mentor-role">Tech Geopolitics</div><div class="mentor-bio">Technologist and public policy researcher. Fellow with Tech Policy Press. Former Executive Director of the Internet Freedom Foundation. Researches digital rights, disinformation, and the information ecosystem.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/douglas fuller.jpg" alt="Prof. Douglas Fuller" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Prof. Douglas Fuller</div><div class="mentor-role">Tech Geopolitics</div><div class="mentor-bio">Associate Professor at Copenhagen Business School. Author of 'Paper Tigers' and 'Hidden Dragons: Firms and the Political Economy of China's Technological Development'.</div></div></div></div></div><div class="people-track-section"><div class="people-track-heading" style="background:#b5451b;">Law Enforcement</div><div class="people-grid"><div class="mentor-card"><img src="images/nast-mentors/Javeed Ahmad.jpg" alt="Javeed Ahmad" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Javeed Ahmad</div><div class="mentor-role">Law Enforcement</div><div class="mentor-bio">Adjunct Distinguished Fellow at the Takshashila Institution. Retired IPS officer with 37 years of leadership in policing. Served as Director General of Police (Uttar Pradesh), Joint Director of CBI, and Director of the National Institute of Criminology and Forensic Sciences.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/M N Reddi, IPS.jpg" alt="M. N. Reddi" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">M. N. Reddi</div><div class="mentor-role">Law Enforcement</div><div class="mentor-bio">Retired Indian Police Service officer of the 1984 Karnataka cadre. Served as Director General of Police & Chief of Combined Emergency Services of Karnataka. Former Commissioner of Police, Bangalore City.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/Prabodh Kumar.jpg" alt="Prabodh Kumar" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Prabodh Kumar</div><div class="mentor-role">Law Enforcement</div><div class="mentor-bio">Retired Indian Police Service officer (1988 batch, Punjab cadre). Superannuated as Director General of Police, Punjab in 2025. Previously served as Senior Superintendent of Police and led the Punjab Bureau of Investigation.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/Ramphal Pawar.jpg" alt="Ramphal Pawar" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Ramphal Pawar</div><div class="mentor-role">Law Enforcement</div><div class="mentor-bio">Former Director of the National Crime Records Bureau (NCRB). Retired Indian Police Service officer of the 1988 West Bengal cadre. Served as Joint Secretary at the National Intelligence Grid (NATGRID).</div></div></div><div class="mentor-card"><img src="images/nast-mentors/shiv sahai.png" alt="Shiv Murari Sahai" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Shiv Murari Sahai</div><div class="mentor-role">Law Enforcement</div><div class="mentor-bio">Retired Indian Police Service (IPS) officer of the 1987 batch, J&K cadre. Served as Additional Secretary in the Internal Affairs Division of the National Security Council Secretariat (PMO) and held key leadership roles including ADG Intelligence and IGP Kashmir.</div></div></div></div></div><div class="people-track-section"><div class="people-track-heading" style="background:#666666;">Expert Advisors</div><div class="people-grid"><div class="mentor-card"><img src="images/nast-mentors/happymon.png" alt="Prof. Happymon Jacob" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Prof. Happymon Jacob</div><div class="mentor-role">Strategic Affairs Expert</div><div class="mentor-bio">Indian strategic affairs expert specializing in India-Pakistan relations. Founder of the Council for Strategic and Defense Research, editor of India's World magazine, and Distinguished Visiting Professor at Shiv Nadar University.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/kajari.png" alt="Dr. Kajari Kamal" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Kajari Kamal</div><div class="mentor-role">Strategic Culture Expert</div><div class="mentor-bio">Associate Professor at Takshashila Institution and distinguished scholar of India's strategic culture and grand strategy. Recognized for bridging ancient Indian political thought with modern statecraft, focusing on the Arthashastra.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/pallavi.png" alt="Dr. Pallavi Raghavan" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Pallavi Raghavan</div><div class="mentor-role">Historian</div><div class="mentor-bio">Historian of the modern Indian subcontinent focusing on political and diplomatic history of India and Pakistan, particularly in the early decades after Partition. Author of 'Animosity at Bay'.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/katju.png" alt="Vivek Katju" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Vivek Katju</div><div class="mentor-role">Diplomat & Strategic Analyst</div><div class="mentor-bio">Former Indian diplomat and strategic affairs analyst. Served as India's Ambassador to Afghanistan and Myanmar, and held senior positions in the Ministry of External Affairs. Expert on India's foreign policy and regional security.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/Jabin T. jacob.webp" alt="Dr. Jabin Jacob" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Jabin Jacob</div><div class="mentor-role">International Relations Scholar</div><div class="mentor-bio">Associate Professor at the Department of International Relations and Governance Studies, Shiv Nadar Institute of Eminence, and Adjunct Research Fellow at the National Maritime Foundation. Non-resident Fellow at CSEP New Delhi.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/sanjay-baru-bnw-profile-photo.jpg" alt="Dr. Sanjaya Baru" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Sanjaya Baru</div><div class="mentor-role">Policy Expert & Journalist</div><div class="mentor-bio">Distinguished Fellow with Takshashila Institution and Founder-Trustee of Forum for National Security Studies. Former Editor of The Financial Express and Business Standard, and Media Advisor to Prime Minister Manmohan Singh.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/Pai_Santosh.jpg" alt="Mr. Santosh Pai" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Mr. Santosh Pai</div><div class="mentor-role">Legal Expert</div><div class="mentor-bio">Partner with Dentons Link Legal, offering legal services in the India-China corridor since 2010. Expert in Chinese investments in India, India-China comparative law, cross-cultural negotiations, and board governance.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/amrita.jpg" alt="Dr. Amrita Jash" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Dr. Amrita Jash</div><div class="mentor-role">Geopolitics Scholar</div><div class="mentor-bio">Assistant Professor at the Department of Geopolitics and International Relations, Manipal Academy of Higher Education. PhD Co-ordinator and Co-coordinator of MAHE Centre for Indo-Pacific Studies.</div></div></div><div class="mentor-card"><img src="images/nast-mentors/Narasimhan copy.jpg" alt="Lt. Gen. S.L. Narasimhan (Retd.)" class="mentor-photo" onerror="this.style.display='none'"><div class="mentor-content"><div class="mentor-name">Lt. Gen. S.L. Narasimhan (Retd.)</div><div class="mentor-role">Military Expert</div><div class="mentor-bio">Infantry officer who has worked extensively on the India-China border and served as a company commander with the Indian Peace Keeping Force in Sri Lanka. Previously served on the Indian Military Training Team in Bhutan and as the defense attaché with the embassy of India in China for three years.</div></div></div></div></div>
 </div>
-<!-- ═══════════════════════════════════════════════════
-     OVERVIEW TAB
-═══════════════════════════════════════════════════ -->
-<div class="panel active" id="panel-overview">
-<div class="track-intro">
-  <h2>Conference at a Glance</h2>
-  <p>All sessions across all four tracks, side by side — so you can plan your day and choose where to be.</p>
-</div>
-<div class="overview-day-selector day-selector">
-  <button class="day-btn" onclick="showOverviewDay(0)">27 February</button>
-  <button class="day-btn active" onclick="showOverviewDay(1)">28 February</button>
-  <button class="day-btn" onclick="showOverviewDay(2)">1 March</button>
-</div>
-
-<div class="ov-legend">
-  <span style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text-muted);margin-right:4px;">Venues:</span>
-  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:var(--maroon);opacity:0.7;"></span>Grand Ballroom 1 — All-conference plenaries</span>
-  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#1d3557;opacity:0.7;"></span>Indian Affairs Hall — China Track</span>
-  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#2d6a4f;opacity:0.7;"></span>Grand Ballroom 2 — Pakistan Track</span>
-  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#7b2d8b;opacity:0.7;"></span>Sigma Hall — Tech Geopolitics</span>
-  <span class="ov-legend-item"><span class="ov-legend-dot" style="background:#b5451b;opacity:0.7;"></span>Grand Esquire Hall — Law Enforcement</span>
-</div>
-
-<!-- ── DAY 1 ── -->
-<div class="overview-day" id="overview-day0">
-<div class="notice-banner"><strong>Exclusive Event</strong> — This evening is open exclusively to fellows, mentors, and invitees of the NASC, NASP, NAST, and LEPF fellowship tracks.</div>
-<div class="schedule-card" style="margin-bottom:16px;">
-<div class="shared-banner">All-Conference · Evening Programme<span class="header-venue">📍 The Grand Ballroom</span></div>
-<div class="schedule-row break-row">
-<div class="time-col">06:30 – 07:00 PM</div>
-<div class="event-col"><div class="event-title">Registration &amp; Networking</div></div>
-</div>
-<div class="schedule-row plenary">
-<div class="time-col">07:00 – 07:10 PM</div>
-<div class="event-col"><div class="event-title plenary-title">Welcome Remarks</div></div>
-</div>
-<div class="schedule-row plenary">
-<div class="time-col">07:10 – 08:30 PM</div>
-<div class="event-col"><div class="event-title plenary-title">Welcome Quiz</div></div>
-</div>
-<div class="schedule-row break-row">
-<div class="time-col">08:30 – 10:30 PM</div>
-<div class="event-col"><div class="event-title">Networking + Dinner</div></div>
-</div>
-</div>
-</div><!-- overview-day0 -->
-<div class="overview-day active" id="overview-day1">
-<table class="ov-table">
-  <tr>
-    <th class="th-time">Time</th>
-    <th class="th-track" style="background:#1d3557;">China Track<span class="track-abbr">NASC</span><span class="venue-small">📍 Indian Affairs Hall</span></th>
-    <th class="th-track" style="background:#2d6a4f;">Pakistan Track<span class="track-abbr">NASP</span><span class="venue-small">📍 Grand Ballroom 2</span></th>
-    <th class="th-track" style="background:#7b2d8b;">Tech Geopolitics<span class="track-abbr">NAST</span><span class="venue-small">📍 Sigma Hall</span></th>
-    <th class="th-track" style="background:#b5451b;">Law Enforcement<span class="track-abbr">LEPF</span><span class="venue-small">📍 Grand Esquire Hall</span></th>
-  </tr>
-  <tr class="ov-plenary">
-    <td class="td-time">09:00 –<br>09:20</td>
-    <td colspan="4" class="plenary-cell">
-      <span class="plenary-time-right">09:00 – 09:20</span>
-      <span class="plenary-label">Welcome Address</span>
-      <span class="plenary-venue">📍 Grand Ballroom 1</span>
-    </td>
-  </tr>
-  <tr class="ov-plenary">
-    <td class="td-time">09:20 –<br>10:30</td>
-    <td colspan="4" class="plenary-cell">
-      <span class="plenary-time-right">09:20 – 10:30</span>
-      <span class="plenary-label">Plenary 1: Townhall</span>
-      <span class="plenary-venue">📍 Grand Ballroom 1</span>
-    </td>
-  </tr>
-  <tr class="ov-divider">
-    <td colspan="5">10:30 – 10:50 &nbsp;·&nbsp; Transition Time + Tea &amp; Coffee Break</td>
-  </tr>
-      <tr>
-    <td class="td-time">10:50 –<br>13:00</td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 1, 'slot-nasc-1-1050')" title="View China Track schedule" style="min-height:262px;">
-        <span class="ov-cell-theme">Theme 1: The Tibet Question</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Anushka Saxena · 10:50 – 12:05</span>
-      </div>
-      <div class="ov-sub sub-roundtable clickable" onclick="navigateToSlot('nasc', 1, 'slot-nasc-1-1205')" title="View China Track schedule" style="min-height:192px;">
-        <span class="ov-cell-label">Roundtable</span>
-        <span class="ov-cell-title">India's Approach to China in a World Marked by Great Power Rivalry</span>
-        <span class="ov-cell-meta">Provocateurs: Dr. Anton Harder, Dr. Jabin Jacob &amp; Dr. Devendra Kumar<br>Chair: Dhara Shah · 12:05 – 13:00</span>
-      </div>
-      </div>
-    </td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-gap" style="min-height:18px;"></div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 1, 'slot-nasp-1-1055')" title="View Pakistan Track schedule" style="min-height:438px;">
-        <span class="ov-cell-theme">Theme 1: Who Runs Pakistan?</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Aishwaria Sonavane · 10:55 – 13:00</span>
-      </div>
-      </div>
-    </td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nast', 1, 'slot-nast-1-1045')" title="View Tech Geopolitics schedule" style="min-height:368px;">
-        <span class="ov-cell-theme">Theme 1: Emerging Technologies &amp; Supply Chains</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Bharath Reddy · 10:50 – 12:35</span>
-      </div>
-      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nast', 1, 'slot-nast-1-1235')" title="View Tech Geopolitics schedule" style="min-height:88px;">
-        <span class="ov-cell-label">Special Session 1</span>
-        <span class="ov-cell-title">China's Technology Policy and its Path Towards Technological Development</span>
-        <span class="ov-cell-meta">Speaker: Prof. Douglas Fuller · 12:35 – 13:00</span>
-      </div>
-      </div>
-    </td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 1, 'slot-lepf-1-1050')" title="View Law Enforcement schedule" style="min-height:455px;">
-        <span class="ov-cell-theme">Hackathon: AI in Policing</span>
-        <span class="ov-cell-title">Briefing + Breakout: Constructing Alternatives</span>
-        <span class="ov-cell-meta">10:50 – 13:00</span>
-      </div>
-      </div>
-    </td>
-  </tr>
-  <tr class="ov-divider">
-    <td colspan="5">13:00 – 14:15 &nbsp;·&nbsp; Lunch + Transition Time</td>
-  </tr>
-  <tr class="ov-plenary">
-    <td class="td-time">14:15 –<br>15:30</td>
-    <td colspan="4" class="plenary-cell">
-      <span class="plenary-time-right">14:15 – 15:30</span>
-      <span class="plenary-label">Plenary 2: Unconference</span>
-      <span class="plenary-venue">📍 Grand Ballroom 1</span>
-    </td>
-  </tr>
-  <tr class="ov-divider">
-    <td colspan="5">15:30 – 15:45 &nbsp;·&nbsp; Transition Time</td>
-  </tr>
-      <tr>
-    <td class="td-time">15:45 –<br>17:25</td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 1, 'slot-nasc-1-1545')" title="View China Track schedule" style="min-height:262px;">
-        <span class="ov-cell-theme">Theme 2: China Innovates, But Does It Dominate?</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Shobhankita Reddy · 15:45 – 17:00</span>
-      </div>
-      <div class="ov-sub sub-gap" style="min-height:88px;"></div>
-      </div>
-    </td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-gap" style="min-height:18px;"></div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 1, 'slot-nasp-1-1550')" title="View Pakistan Track schedule" style="min-height:245px;">
-        <span class="ov-cell-theme">Theme 2: The Military–Jihadi Complex</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Adya Madhavan · 15:50 – 17:00</span>
-      </div>
-      <div class="ov-sub sub-gap" style="min-height:88px;"></div>
-      </div>
-    </td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nast', 1, 'slot-nast-1-1545')" title="View Tech Geopolitics schedule" style="min-height:350px;">
-        <span class="ov-cell-theme">Theme 2: Space · Theme 3: Technology &amp; National Power</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Bharath Reddy · 15:45 – 17:25</span>
-      </div>
-      </div>
-    </td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 1, 'slot-lepf-1-1415')" title="View Law Enforcement schedule" style="min-height:350px;">
-        <span class="ov-cell-theme">Hackathon (continued): AI in Policing</span>
-        <span class="ov-cell-title">Breakout: Projecting Outcomes + Group Presentations</span>
-        <span class="ov-cell-meta">15:45 – 17:25</span>
-      </div>
-      </div>
-    </td>
-  </tr>
-  <tr class="ov-divider">
-    <td colspan="5">17:25 – 18:15 &nbsp;·&nbsp; Transition Time + Tea &amp; Coffee Break</td>
-  </tr>
-  <tr class="ov-plenary">
-    <td class="td-time">18:15 –<br>20:30</td>
-    <td colspan="4" class="plenary-cell">
-      <span class="plenary-time-right">18:15 – 20:30</span>
-      <span class="plenary-label">Plenary 3: The Global Hangout</span>
-      <span class="plenary-venue">📍 Grand Ballroom 1</span>
-    </td>
-  </tr>
-  <tr class="ov-divider">
-    <td colspan="5">20:30 – 22:00 &nbsp;·&nbsp; Dinner</td>
-  </tr>
-</table>
-</div><!-- overview-day1 -->
-
-<!-- ── DAY 2 ── -->
-<div class="overview-day" id="overview-day2">
-<table class="ov-table">
-  <tr>
-    <th class="th-time">Time</th>
-    <th class="th-track" style="background:#1d3557;">China Track<span class="track-abbr">NASC</span><span class="venue-small">📍 Indian Affairs Hall</span></th>
-    <th class="th-track" style="background:#2d6a4f;">Pakistan Track<span class="track-abbr">NASP</span><span class="venue-small">📍 Grand Ballroom 2</span></th>
-    <th class="th-track" style="background:#7b2d8b;">Tech Geopolitics<span class="track-abbr">NAST</span><span class="venue-small">📍 Sigma Hall</span></th>
-    <th class="th-track" style="background:#b5451b;">Law Enforcement<span class="track-abbr">LEPF</span><span class="venue-small">📍 Grand Esquire Hall</span></th>
-  </tr>
-      <tr>
-    <td class="td-time">09:00 –<br>12:10</td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-panel clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-0900')" title="View China Track schedule" style="min-height:192px;">
-        <span class="ov-cell-label">Panel Discussion</span>
-        <span class="ov-cell-title">Talking Security — China, Pakistan &amp; India's National Defence</span>
-        <span class="ov-cell-meta">Speakers: Lt. Gen. S.L. Narasimhan &amp; Dr. Amrita Jash<br>Chair: Anushka Saxena · 09:00 – 09:55</span>
-      </div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-0957')" title="View China Track schedule" style="min-height:63px;">
-        <span class="ov-cell-theme">Theme 3: Two-Front Conundrum</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Anushka Saxena · 09:57 – 10:15</span>
-      </div>
-      <div class="ov-sub sub-break" style="min-height:70px;">
-        <span class="ov-cell-meta" style="font-style:italic;">☕ Tea &amp; Coffee Break · 10:15 – 10:35</span>
-      </div>
-      <div class="ov-sub sub-panel clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-1035')" title="View China Track schedule" style="min-height:210px;">
-        <span class="ov-cell-label">Panel Discussion</span>
-        <span class="ov-cell-title">China in the Changing Geo-economic Landscape</span>
-        <span class="ov-cell-meta">Speakers: Dr. Sanjaya Baru, Ms. Katja Drinhausen &amp; Mr. Santosh Pai<br>Chair: Amit Kumar · 10:35 – 11:35</span>
-      </div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-1137')" title="View China Track schedule" style="min-height:91px;">
-        <span class="ov-cell-theme">Theme 4: Politics of the Green</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Bhumika Sevkani · 11:37 – 12:03</span>
-      </div>
-      <div class="ov-sub sub-gap" style="min-height:24px;"></div>
-      </div>
-    </td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-gap" style="min-height:18px;"></div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-0905')" title="View Pakistan Track schedule" style="min-height:245px;">
-        <span class="ov-cell-theme">Theme 4: Markets and Power</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Sarthak Pradhan · 09:05 – 10:15</span>
-      </div>
-      <div class="ov-sub sub-break" style="min-height:70px;">
-        <span class="ov-cell-meta" style="font-style:italic;">☕ Tea &amp; Coffee Break · 10:15 – 10:35</span>
-      </div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-1035')" title="View Pakistan Track schedule" style="min-height:245px;">
-        <span class="ov-cell-theme">Theme 5: Strategic Partnerships</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Vikrant Shinde · 10:35 – 11:45</span>
-      </div>
-      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-1145')" title="View Pakistan Track schedule" style="min-height:88px;">
-        <span class="ov-cell-label">Special Session</span>
-        <span class="ov-cell-title">India–Pakistan Low-Visibility Tracks</span>
-        <span class="ov-cell-meta">11:45 – 12:10</span>
-      </div>
-      </div>
-    </td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-0900')" title="View Tech Geopolitics schedule" style="min-height:210px;">
-        <span class="ov-cell-label">Special Session 2</span>
-        <span class="ov-cell-title">India's Tech Moment: Navigating the Great Power Digital Divide</span>
-        <span class="ov-cell-meta">Speakers: Karthik Nachiappan, Anirudh Suri &amp; Pranay Kotasthane<br>09:00 – 10:00</span>
-      </div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1000')" title="View Tech Geopolitics schedule" style="min-height:280px;">
-        <span class="ov-cell-theme">Theme 4: AI &amp; Cybersecurity</span>
-        <span class="ov-cell-title">Paper Discussions</span>
-        <span class="ov-cell-meta">Chair: Pranay Kotasthane · 10:00 – 11:20</span>
-      </div>
-      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1120')" title="View Tech Geopolitics schedule" style="min-height:105px;">
-        <span class="ov-cell-label">Special Session 3</span>
-        <span class="ov-cell-title">Nuclear Risks From Emerging Tech In The Contemporary Times</span>
-        <span class="ov-cell-meta">Speaker: Dr. Manpreet Sethi · 11:20 – 11:50</span>
-      </div>
-      <div class="ov-sub sub-closing clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1150')" title="View Tech Geopolitics schedule" style="min-height:35px;">
-        <span class="ov-cell-title">NAST Closing Address</span>
-        <span class="ov-cell-meta">11:50 – 12:00</span>
-      </div>
-      <div class="ov-sub sub-gap" style="min-height:35px;"></div>
-      </div>
-    </td>
-    <td style="padding:0;vertical-align:top;">
-      <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 2, 'slot-lepf-2-0900')" title="View Law Enforcement schedule" style="min-height:262px;">
-        <span class="ov-cell-theme">Hackathon Final Day: AI in Policing</span>
-        <span class="ov-cell-title">Briefing + Breakout: Final Presentations</span>
-        <span class="ov-cell-meta">09:00 – 10:15</span>
-      </div>
-      <div class="ov-sub sub-break" style="min-height:70px;">
-        <span class="ov-cell-meta" style="font-style:italic;">☕ Tea &amp; Coffee Break · 10:15 – 10:35</span>
-      </div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 2, 'slot-lepf-2-1030')" title="View Law Enforcement schedule" style="min-height:298px;">
-        <span class="ov-cell-title">Final Presentations</span>
-        <span class="ov-cell-meta">10:35 – 12:00</span>
-      </div>
-      <div class="ov-sub sub-gap" style="min-height:35px;"></div>
-      </div>
-    </td>
-  </tr>
-  <tr class="ov-divider">
-    <td colspan="5">12:10 – 12:15 &nbsp;·&nbsp; Transition Time</td>
-  </tr>
-  <tr class="ov-plenary">
-    <td class="td-time">12:15 –<br>13:00</td>
-    <td colspan="4" class="plenary-cell">
-      <span class="plenary-time-right">12:15 – 13:00</span>
-      <span class="plenary-label">Plenary 4: Closing Ceremony</span>
-      <span class="plenary-venue">📍 Grand Ballroom 1</span>
-    </td>
-  </tr>
-  <tr class="ov-divider">
-    <td colspan="5">13:00 – 14:30 &nbsp;·&nbsp; Lunch + Departures</td>
-  </tr>
-</table>
-</div><!-- overview-day2 -->
-</div><!-- panel-overview -->
 
 </main>
 
