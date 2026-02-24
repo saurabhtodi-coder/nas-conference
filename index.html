@@ -9,16 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --maroon: #6B1533;
-    --maroon-light: #8a1d42;
-    --gold: #D4920A;
-    --gold-light: #f0ab1a;
-    --cream: #FAF7F2;
-    --cream-dark: #F0EBE1;
-    --text: #1a1210;
-    --text-muted: #7a6a62;
+    --maroon: #620d3c;
+    --maroon-light: #7a1049;
+    --gold: #f1a222;
+    --gold-light: #f5bc55;
+    --cream: #f7f7f7;
+    --cream-dark: #ebebeb;
+    --text: #040404;
+    --text-muted: #555555;
     --white: #ffffff;
-    --border: rgba(107, 21, 51, 0.12);
+    --border: rgba(98, 13, 60, 0.12);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,7 +43,7 @@
     bottom: -30px; right: -60px;
     width: 400px; height: 400px;
     border-radius: 50%;
-    border: 60px solid rgba(212,146,10,0.12);
+    border: 60px solid rgba(241,162,34,0.12);
     pointer-events: none;
   }
   header::after {
@@ -52,7 +52,7 @@
     top: -80px; right: 200px;
     width: 250px; height: 250px;
     border-radius: 50%;
-    border: 40px solid rgba(212,146,10,0.08);
+    border: 40px solid rgba(241,162,34,0.08);
     pointer-events: none;
   }
   .header-inner {
@@ -91,8 +91,8 @@
     align-items: center;
   }
   .date-badge {
-    background: rgba(212,146,10,0.18);
-    border: 1px solid rgba(212,146,10,0.35);
+    background: rgba(241,162,34,0.18);
+    border: 1px solid rgba(241,162,34,0.35);
     border-radius: 4px;
     padding: 6px 14px;
     font-size: 13px;
@@ -108,7 +108,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 20px rgba(107,21,51,0.07);
+    box-shadow: 0 2px 20px rgba(98,13,60,0.07);
   }
   .nav-inner {
     max-width: 1100px;
@@ -136,7 +136,7 @@
   .tab-btn:hover { color: var(--maroon); }
   .tab-btn.active {
     color: var(--maroon);
-    border-bottom-color: var(--gold);
+    border-bottom-color: #ffeb03;
     font-weight: 500;
   }
 
@@ -185,7 +185,7 @@
   .track-intro {
     margin-bottom: 32px;
     padding: 20px 24px;
-    background: linear-gradient(135deg, rgba(107,21,51,0.06), rgba(212,146,10,0.04));
+    background: linear-gradient(135deg, rgba(98,13,60,0.06), rgba(241,162,34,0.04));
     border-left: 3px solid var(--gold);
     border-radius: 0 8px 8px 0;
   }
@@ -222,14 +222,14 @@
     transition: background 0.15s ease;
   }
   .schedule-row:last-child { border-bottom: none; border-radius: 0 0 6px 6px; }
-  .schedule-row:hover { background: rgba(107,21,51,0.025); }
+  .schedule-row:hover { background: rgba(98,13,60,0.025); }
 
   .schedule-row.plenary {
-    background: rgba(212,146,10,0.07);
+    background: rgba(241,162,34,0.07);
   }
-  .schedule-row.plenary:hover { background: rgba(212,146,10,0.12); }
+  .schedule-row.plenary:hover { background: rgba(241,162,34,0.12); }
   .schedule-row.break-row {
-    background: rgba(107,21,51,0.03);
+    background: rgba(98,13,60,0.03);
   }
 
   .time-col {
@@ -319,8 +319,8 @@
     transition: all 0.2s ease;
   }
   .person-card:hover {
-    border-color: rgba(107,21,51,0.3);
-    box-shadow: 0 4px 16px rgba(107,21,51,0.08);
+    border-color: rgba(98,13,60,0.3);
+    box-shadow: 0 4px 16px rgba(98,13,60,0.08);
     transform: translateY(-1px);
   }
   .person-avatar {
@@ -355,13 +355,13 @@
     text-transform: uppercase;
     padding: 3px 8px;
     border-radius: 3px;
-    background: rgba(212,146,10,0.12);
+    background: rgba(241,162,34,0.12);
     color: var(--gold);
   }
 
   .placeholder-notice {
-    background: rgba(212,146,10,0.08);
-    border: 1px dashed rgba(212,146,10,0.4);
+    background: rgba(241,162,34,0.08);
+    border: 1px dashed rgba(241,162,34,0.4);
     border-radius: 8px;
     padding: 32px;
     text-align: center;
@@ -438,7 +438,7 @@
 
   /* ── MEALS & TRANSITIONS banner — warm slate, visually distinct ── */
   .shared-banner.meals-banner {
-    background: #4a5568;
+    background: #1a1a1a;
     color: rgba(255,255,255,0.65);
     letter-spacing: 1.2px;
   }
@@ -448,13 +448,13 @@
   }
   /* Slightly muted card border for meals cards */
   .meals-card {
-    border-color: rgba(74,85,104,0.25);
+    border-color: rgba(4,4,4,0.15);
   }
   .meals-card .schedule-row {
-    background: #fafafa;
+    background: #f7f7f7;
   }
   .meals-card .schedule-row:hover {
-    background: rgba(74,85,104,0.04);
+    background: rgba(4,4,4,0.04);
   }
 
   
@@ -504,7 +504,7 @@
     letter-spacing: 0.2px;
   }
   .people-tab-btn:not(.active) .people-count {
-    background: rgba(107,21,51,0.08);
+    background: rgba(98,13,60,0.08);
     color: var(--maroon);
   }
   .people-group { display: none; }
@@ -614,7 +614,7 @@
     width: 72px;
   }
   .ov-table tr.ov-divider td {
-    background: #4a5568;
+    background: #1a1a1a;
     color: rgba(255,255,255,0.65);
     font-size: 10px;
     font-weight: 600;
@@ -624,7 +624,7 @@
     border: none;
   }
   .ov-table tr.ov-plenary td.plenary-cell {
-    background: linear-gradient(135deg, rgba(107,21,51,0.07), rgba(212,146,10,0.05));
+    background: linear-gradient(135deg, rgba(98,13,60,0.07), rgba(241,162,34,0.05));
     border-left: 3px solid var(--gold);
     padding: 10px 14px;
   }
@@ -658,11 +658,11 @@
     line-height: 1.4;
   }
   .ov-sub + .ov-sub { border-top: 1px solid var(--border); }
-  .ov-sub.sub-paper     { border-left-color: rgba(107,21,51,0.3); }
-  .ov-sub.sub-special   { border-left-color: var(--gold); background: rgba(212,146,10,0.05); }
+  .ov-sub.sub-paper     { border-left-color: rgba(98,13,60,0.3); }
+  .ov-sub.sub-special   { border-left-color: #ffeb03; background: rgba(255,235,3,0.07); }
   .ov-sub.sub-panel     { border-left-color: #1d3557; background: rgba(29,53,87,0.04); }
   .ov-sub.sub-roundtable{ border-left-color: #2d6a4f; background: rgba(45,106,79,0.04); }
-  .ov-sub.sub-closing   { border-left-color: rgba(107,21,51,0.2); }
+  .ov-sub.sub-closing   { border-left-color: rgba(98,13,60,0.2); }
   .ov-sub.sub-break     { border-left-color: transparent; background: var(--cream-dark); padding: 4px 10px; }
   .ov-cell-theme {
     font-size: 9.5px; font-weight: 700; letter-spacing: 0.5px;
