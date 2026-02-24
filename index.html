@@ -741,12 +741,33 @@
     line-height: 1.4;
   }
   .ov-sub + .ov-sub { border-top: 1px solid var(--border); }
-  .ov-sub.sub-paper     { border-left-color: rgba(98,13,60,0.3); }
-  .ov-sub.sub-special   { border-left-color: #ffeb03; background: rgba(255,235,3,0.07); }
-  .ov-sub.sub-panel     { border-left-color: #1d3557; background: rgba(29,53,87,0.04); }
-  .ov-sub.sub-roundtable{ border-left-color: #2d6a4f; background: rgba(45,106,79,0.04); }
-  .ov-sub.sub-closing   { border-left-color: rgba(98,13,60,0.2); }
+  .ov-sub.sub-paper     { border-left-color: rgba(98,13,60,0.3); background: transparent; }
+  .ov-sub.sub-special   { border-left-color: #ffeb03; background: rgba(255,235,3,0.08); }
+  .ov-sub.sub-panel     { border-left-color: #1d3557; background: rgba(29,53,87,0.05); }
+  .ov-sub.sub-roundtable{ border-left-color: #2d6a4f; background: rgba(45,106,79,0.05); }
+  .ov-sub.sub-closing   { border-left-color: rgba(98,13,60,0.2); background: transparent; }
   .ov-sub.sub-break     { border-left-color: transparent; background: var(--cream-dark); padding: 4px 10px; }
+  /* Track-specific border colors for overview cells */
+  .ov-track-china { border-left-color: #1d3557 !important; }
+  .ov-track-china.sub-paper { border-left-color: #1d3557; background: transparent; }
+  .ov-track-china.sub-special { border-left-color: #1d3557; background: rgba(29,53,87,0.08); }
+  .ov-track-china.sub-panel { border-left-color: #1d3557; background: rgba(29,53,87,0.06); }
+  .ov-track-china.sub-roundtable { border-left-color: #1d3557; background: rgba(29,53,87,0.06); }
+  .ov-track-pakistan { border-left-color: #2d6a4f !important; }
+  .ov-track-pakistan.sub-paper { border-left-color: #2d6a4f; background: transparent; }
+  .ov-track-pakistan.sub-special { border-left-color: #2d6a4f; background: rgba(45,106,79,0.08); }
+  .ov-track-pakistan.sub-panel { border-left-color: #2d6a4f; background: rgba(45,106,79,0.06); }
+  .ov-track-pakistan.sub-roundtable { border-left-color: #2d6a4f; background: rgba(45,106,79,0.06); }
+  .ov-track-tech { border-left-color: #7b2d8b !important; }
+  .ov-track-tech.sub-paper { border-left-color: #7b2d8b; background: transparent; }
+  .ov-track-tech.sub-special { border-left-color: #7b2d8b; background: rgba(123,45,139,0.08); }
+  .ov-track-tech.sub-panel { border-left-color: #7b2d8b; background: rgba(123,45,139,0.06); }
+  .ov-track-tech.sub-roundtable { border-left-color: #7b2d8b; background: rgba(123,45,139,0.06); }
+  .ov-track-lepf { border-left-color: #b5451b !important; }
+  .ov-track-lepf.sub-paper { border-left-color: #b5451b; background: transparent; }
+  .ov-track-lepf.sub-special { border-left-color: #b5451b; background: rgba(181,69,27,0.08); }
+  .ov-track-lepf.sub-panel { border-left-color: #b5451b; background: rgba(181,69,27,0.06); }
+  .ov-track-lepf.sub-roundtable { border-left-color: #b5451b; background: rgba(181,69,27,0.06); }
   .ov-cell-theme {
     font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
     text-transform: uppercase; color: var(--gold); line-height: 1.3;
@@ -905,12 +926,12 @@ February 27th – March 1, 2026
     <td class="td-time">10:50 –<br>13:00</td>
     <td style="padding:0;vertical-align:top;">
       <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 1, 'slot-nasc-1-1050')" title="View China Track schedule" style="min-height:225px;">
+      <div class="ov-sub sub-paper ov-track-china clickable" onclick="navigateToSlot('nasc', 1, 'slot-nasc-1-1050')" title="View China Track schedule" style="flex:1;min-height:225px;">
         <span class="ov-cell-theme">Theme 1: The Tibet Question</span>
         <span class="ov-cell-title">Paper Discussions</span>
         <span class="ov-cell-meta">Chair: Anushka Saxena · 10:50 – 12:05</span>
       </div>
-      <div class="ov-sub sub-roundtable clickable" onclick="navigateToSlot('nasc', 1, 'slot-nasc-1-1205')" title="View China Track schedule" style="min-height:165px;">
+      <div class="ov-sub sub-roundtable ov-track-china clickable" onclick="navigateToSlot('nasc', 1, 'slot-nasc-1-1205')" title="View China Track schedule" style="flex:1;min-height:165px;">
         <span class="ov-cell-label">Roundtable</span>
         <span class="ov-cell-title">India's Approach to China in a World Marked by Great Power Rivalry</span>
         <span class="ov-cell-meta">Provocateurs: Dr. Anton Harder, Dr. Jabin Jacob &amp; Dr. Devendra Kumar<br>Chair: Dhara Shah · 12:05 – 13:00</span>
@@ -919,8 +940,8 @@ February 27th – March 1, 2026
     </td>
     <td style="padding:0;vertical-align:top;">
       <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-gap" style="min-height:15px;"></div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 1, 'slot-nasp-1-1055')" title="View Pakistan Track schedule" style="min-height:375px;">
+      <div class="ov-sub sub-gap" style="flex:0 0 auto;min-height:15px;"></div>
+      <div class="ov-sub sub-paper ov-track-pakistan clickable" onclick="navigateToSlot('nasp', 1, 'slot-nasp-1-1055')" title="View Pakistan Track schedule" style="flex:1;min-height:375px;">
         <span class="ov-cell-theme">Theme 1: Who Runs Pakistan?</span>
         <span class="ov-cell-title">Paper Discussions</span>
         <span class="ov-cell-meta">Chair: Aishwaria Sonavane · 10:55 – 13:00</span>
@@ -929,12 +950,12 @@ February 27th – March 1, 2026
     </td>
     <td style="padding:0;vertical-align:top;">
       <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nast', 1, 'slot-nast-1-1045')" title="View Tech Geopolitics schedule" style="min-height:315px;">
+      <div class="ov-sub sub-paper ov-track-tech clickable" onclick="navigateToSlot('nast', 1, 'slot-nast-1-1045')" title="View Tech Geopolitics schedule" style="flex:1;min-height:315px;">
         <span class="ov-cell-theme">Theme 1: Emerging Technologies &amp; Supply Chains</span>
         <span class="ov-cell-title">Paper Discussions</span>
         <span class="ov-cell-meta">Chair: Bharath Reddy · 10:50 – 12:35</span>
       </div>
-      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nast', 1, 'slot-nast-1-1235')" title="View Tech Geopolitics schedule" style="min-height:75px;">
+      <div class="ov-sub sub-special ov-track-tech clickable" onclick="navigateToSlot('nast', 1, 'slot-nast-1-1235')" title="View Tech Geopolitics schedule" style="flex:1;min-height:75px;">
         <span class="ov-cell-label">Special Session 1</span>
         <span class="ov-cell-title">China's Technology Policy and its Path Towards Technological Development</span>
         <span class="ov-cell-meta">Speaker: Prof. Douglas Fuller · 12:35 – 13:00</span>
@@ -943,7 +964,7 @@ February 27th – March 1, 2026
     </td>
     <td style="padding:0;vertical-align:top;">
       <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 1, 'slot-lepf-1-1050')" title="View Law Enforcement schedule" style="min-height:390px;">
+      <div class="ov-sub sub-paper ov-track-lepf clickable" onclick="navigateToSlot('lepf', 1, 'slot-lepf-1-1050')" title="View Law Enforcement schedule" style="flex:1;min-height:390px;">
         <span class="ov-cell-theme">Hackathon: AI in Policing</span>
         <span class="ov-cell-title">Briefing + Breakout: Constructing Alternatives</span>
         <span class="ov-cell-meta">10:50 – 13:00</span>
@@ -1038,25 +1059,25 @@ February 27th – March 1, 2026
     <td class="td-time">09:00 –<br>12:10</td>
     <td style="padding:0;vertical-align:top;">
       <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-panel clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-0900')" title="View China Track schedule" style="min-height:165px;">
+      <div class="ov-sub sub-panel ov-track-china clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-0900')" title="View China Track schedule" style="flex:1;min-height:165px;">
         <span class="ov-cell-label">Panel Discussion</span>
         <span class="ov-cell-title">Talking Security — China, Pakistan &amp; India's National Defence</span>
         <span class="ov-cell-meta">Speakers: Lt. Gen. S.L. Narasimhan &amp; Dr. Amrita Jash<br>Chair: Anushka Saxena · 09:00 – 09:55</span>
       </div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-0957')" title="View China Track schedule" style="min-height:54px;">
+      <div class="ov-sub sub-paper ov-track-china clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-0957')" title="View China Track schedule" style="flex:1;min-height:54px;">
         <span class="ov-cell-theme">Theme 3: Two-Front Conundrum</span>
         <span class="ov-cell-title">Paper Discussions</span>
         <span class="ov-cell-meta">Chair: Anushka Saxena · 09:57 – 10:15</span>
       </div>
-      <div class="ov-sub sub-break" style="min-height:60px;">
+      <div class="ov-sub sub-break" style="flex:0 0 auto;min-height:60px;">
         <span class="ov-cell-meta" style="font-style:italic;">☕ Tea &amp; Coffee Break · 10:15 – 10:35</span>
       </div>
-      <div class="ov-sub sub-panel clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-1035')" title="View China Track schedule" style="min-height:180px;">
+      <div class="ov-sub sub-panel ov-track-china clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-1035')" title="View China Track schedule" style="flex:1;min-height:180px;">
         <span class="ov-cell-label">Panel Discussion</span>
         <span class="ov-cell-title">China in the Changing Geo-economic Landscape</span>
         <span class="ov-cell-meta">Speakers: Dr. Sanjaya Baru, Ms. Katja Drinhausen &amp; Mr. Santosh Pai<br>Chair: Amit Kumar · 10:35 – 11:35</span>
       </div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-1137')" title="View China Track schedule" style="min-height:78px;">
+      <div class="ov-sub sub-paper ov-track-china clickable" onclick="navigateToSlot('nasc', 2, 'slot-nasc-2-1137')" title="View China Track schedule" style="flex:1;min-height:78px;">
         <span class="ov-cell-theme">Theme 4: Politics of the Green</span>
         <span class="ov-cell-title">Paper Discussions</span>
         <span class="ov-cell-meta">Chair: Bhumika Sevkani · 11:37 – 12:03</span>
@@ -1065,21 +1086,21 @@ February 27th – March 1, 2026
     </td>
     <td style="padding:0;vertical-align:top;">
       <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-gap" style="min-height:15px;"></div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-0905')" title="View Pakistan Track schedule" style="min-height:210px;">
+      <div class="ov-sub sub-gap" style="flex:0 0 auto;min-height:15px;"></div>
+      <div class="ov-sub sub-paper ov-track-pakistan clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-0905')" title="View Pakistan Track schedule" style="flex:1;min-height:210px;">
         <span class="ov-cell-theme">Theme 4: Markets and Power</span>
         <span class="ov-cell-title">Paper Discussions</span>
         <span class="ov-cell-meta">Chair: Sarthak Pradhan · 09:05 – 10:15</span>
       </div>
-      <div class="ov-sub sub-break" style="min-height:60px;">
+      <div class="ov-sub sub-break" style="flex:0 0 auto;min-height:60px;">
         <span class="ov-cell-meta" style="font-style:italic;">☕ Tea &amp; Coffee Break · 10:15 – 10:35</span>
       </div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-1035')" title="View Pakistan Track schedule" style="min-height:210px;">
+      <div class="ov-sub sub-paper ov-track-pakistan clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-1035')" title="View Pakistan Track schedule" style="flex:1;min-height:210px;">
         <span class="ov-cell-theme">Theme 5: Strategic Partnerships</span>
         <span class="ov-cell-title">Paper Discussions</span>
         <span class="ov-cell-meta">Chair: Vikrant Shinde · 10:35 – 11:45</span>
       </div>
-      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-1145')" title="View Pakistan Track schedule" style="min-height:75px;">
+      <div class="ov-sub sub-special ov-track-pakistan clickable" onclick="navigateToSlot('nasp', 2, 'slot-nasp-2-1145')" title="View Pakistan Track schedule" style="flex:1;min-height:75px;">
         <span class="ov-cell-label">Special Session</span>
         <span class="ov-cell-title">India–Pakistan Low-Visibility Tracks</span>
         <span class="ov-cell-meta">11:45 – 12:10</span>
@@ -1088,22 +1109,22 @@ February 27th – March 1, 2026
     </td>
     <td style="padding:0;vertical-align:top;">
       <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-0900')" title="View Tech Geopolitics schedule" style="min-height:180px;">
+      <div class="ov-sub sub-special ov-track-tech clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-0900')" title="View Tech Geopolitics schedule" style="flex:1;min-height:180px;">
         <span class="ov-cell-label">Special Session 2</span>
         <span class="ov-cell-title">India's Tech Moment: Navigating the Great Power Digital Divide</span>
         <span class="ov-cell-meta">Speakers: Karthik Nachiappan, Anirudh Suri &amp; Pranay Kotasthane<br>09:00 – 10:00</span>
       </div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1000')" title="View Tech Geopolitics schedule" style="min-height:240px;">
+      <div class="ov-sub sub-paper ov-track-tech clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1000')" title="View Tech Geopolitics schedule" style="flex:1;min-height:240px;">
         <span class="ov-cell-theme">Theme 4: AI &amp; Cybersecurity</span>
         <span class="ov-cell-title">Paper Discussions</span>
         <span class="ov-cell-meta">Chair: Pranay Kotasthane · 10:00 – 11:20</span>
       </div>
-      <div class="ov-sub sub-special clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1120')" title="View Tech Geopolitics schedule" style="min-height:90px;">
+      <div class="ov-sub sub-special ov-track-tech clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1120')" title="View Tech Geopolitics schedule" style="flex:1;min-height:90px;">
         <span class="ov-cell-label">Special Session 3</span>
         <span class="ov-cell-title">Nuclear Risks From Emerging Tech In The Contemporary Times</span>
         <span class="ov-cell-meta">Speaker: Dr. Manpreet Sethi · 11:20 – 11:50</span>
       </div>
-      <div class="ov-sub sub-closing clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1150')" title="View Tech Geopolitics schedule" style="min-height:30px;">
+      <div class="ov-sub sub-closing ov-track-tech clickable" onclick="navigateToSlot('nast', 2, 'slot-nast-2-1150')" title="View Tech Geopolitics schedule" style="flex:1;min-height:30px;">
         <span class="ov-cell-title">NAST Closing Address</span>
         <span class="ov-cell-meta">11:50 – 12:00</span>
       </div>
@@ -1111,15 +1132,15 @@ February 27th – March 1, 2026
     </td>
     <td style="padding:0;vertical-align:top;">
       <div class="ov-subs" style="display:flex;flex-direction:column;height:100%;">
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 2, 'slot-lepf-2-0900')" title="View Law Enforcement schedule" style="min-height:262px;">
+      <div class="ov-sub sub-paper ov-track-lepf clickable" onclick="navigateToSlot('lepf', 2, 'slot-lepf-2-0900')" title="View Law Enforcement schedule" style="flex:1;min-height:262px;">
         <span class="ov-cell-theme">Hackathon Final Day: AI in Policing</span>
         <span class="ov-cell-title">Briefing + Breakout: Final Presentations</span>
         <span class="ov-cell-meta">09:00 – 10:15</span>
       </div>
-      <div class="ov-sub sub-break" style="min-height:70px;">
+      <div class="ov-sub sub-break" style="flex:0 0 auto;min-height:70px;">
         <span class="ov-cell-meta" style="font-style:italic;">☕ Tea &amp; Coffee Break · 10:15 – 10:35</span>
       </div>
-      <div class="ov-sub sub-paper clickable" onclick="navigateToSlot('lepf', 2, 'slot-lepf-2-1030')" title="View Law Enforcement schedule" style="min-height:298px;">
+      <div class="ov-sub sub-paper ov-track-lepf clickable" onclick="navigateToSlot('lepf', 2, 'slot-lepf-2-1030')" title="View Law Enforcement schedule" style="flex:1;min-height:298px;">
         <span class="ov-cell-title">Final Presentations</span>
         <span class="ov-cell-meta">10:35 – 12:00</span>
       </div>
