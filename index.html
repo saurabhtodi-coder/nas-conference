@@ -62,6 +62,20 @@
     margin: 0 auto;
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .header-text { flex: 1; min-width: 0; }
+  .header-logo {
+    height: 96px;
+    opacity: 0.95;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+  @media (max-width: 700px) {
+    .header-logo { height: 64px; }
   }
   .org-label {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -746,8 +760,7 @@
 <body>
 <header>
 <div class="header-inner">
-
-<img src="takshashila.png" alt="Takshashila Institution" style="height:48px;margin-bottom:18px;display:block;opacity:0.95;">
+<div class="header-text">
 <h1>takshashila network for<br/>advanced studies</h1>
 <p class="header-subtitle">Annual Conference — Four Tracks · Three Days</p>
 <div class="header-dates">
@@ -757,6 +770,8 @@
 <span style="color:rgba(255,255,255,0.3); font-size:18px;">—</span>
 <span class="date-badge">1 March 2026</span>
 </div>
+</div>
+<img src="takshashila.png" alt="Takshashila Institution" class="header-logo">
 </div>
 </header>
 <nav>
