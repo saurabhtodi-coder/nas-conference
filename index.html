@@ -139,8 +139,8 @@
   .tab-btn {
     padding: 18px 28px;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
     letter-spacing: 0.5px;
     color: var(--text-muted);
     background: transparent;
@@ -150,11 +150,12 @@
     white-space: nowrap;
     transition: all 0.2s ease;
   }
-  .tab-btn:hover { color: var(--maroon); }
+  .tab-btn:hover { color: var(--maroon); background: rgba(98, 13, 60, 0.05); }
   .tab-btn.active {
-    color: var(--maroon);
+    color: var(--white);
+    background: var(--maroon);
     border-bottom-color: #ffeb03;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   /* ── MAIN CONTENT ── */
@@ -428,14 +429,14 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.9px;
     text-transform: uppercase;
     background: rgba(255,255,255,0.15);
     border: 1px solid rgba(255,255,255,0.3);
     color: rgba(255,255,255,0.92);
-    padding: 3px 9px 3px 7px;
+    padding: 4px 11px 4px 9px;
     border-radius: 20px;
     margin-left: 12px;
     vertical-align: middle;
@@ -668,7 +669,7 @@
   }
   .ov-table th .venue-small {
     display: inline-block;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0;
     text-transform: none;
@@ -677,7 +678,7 @@
     color: rgba(255,255,255,0.95);
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 20px;
-    padding: 2px 8px;
+    padding: 3px 10px;
     white-space: nowrap;
   }
   .ov-table td {
